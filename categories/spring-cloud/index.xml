@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring Cloud on cartoon&#39;s blog</title>
-    <link>https://cartoonyu.github.io/cartoon-blog/post/categories/spring-cloud/</link>
+    <link>https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud/</link>
     <description>Recent content in Spring Cloud on cartoon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2021</copyright>
     <lastBuildDate>Wed, 28 Oct 2020 22:56:50 +0800</lastBuildDate>
     
-	<atom:link href="https://cartoonyu.github.io/cartoon-blog/post/categories/spring-cloud/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Eureka服务端与客户端搭建</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/post/spring-cloud/eureka%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%90%AD%E5%BB%BA/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/spring-cloud/eureka%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Wed, 28 Oct 2020 22:56:50 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/post/spring-cloud/eureka%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%90%AD%E5%BB%BA/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/spring-cloud/eureka%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%90%AD%E5%BB%BA/</guid>
       <description>前言 这段时间在构建自己的开发工具集，避不开的就是各种中间件访问层的搭建。而 spring cloud 唯二绕不开的就是 eureka 了，所以就重复造轮子，以后忘记了也有所参考。</description>
     </item>
     

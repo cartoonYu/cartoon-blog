@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>eclipse on cartoon&#39;s blog</title>
-    <link>https://cartoonyu.github.io/cartoon-blog/post/categories/eclipse/</link>
+    <link>https://cartoonyu.github.io/cartoon-blog/categories/eclipse/</link>
     <description>Recent content in eclipse on cartoon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2021</copyright>
     <lastBuildDate>Wed, 08 May 2019 20:56:42 +0800</lastBuildDate>
     
-	<atom:link href="https://cartoonyu.github.io/cartoon-blog/post/categories/eclipse/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cartoonyu.github.io/cartoon-blog/categories/eclipse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>更改eclipse中jsp默认编码格式为UTF-8</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/post/assorted/%E6%9B%B4%E6%94%B9eclipse%E9%BB%98%E8%AE%A4%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/assorted/%E6%9B%B4%E6%94%B9eclipse%E9%BB%98%E8%AE%A4%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</link>
       <pubDate>Wed, 08 May 2019 20:56:42 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/post/assorted/%E6%9B%B4%E6%94%B9eclipse%E9%BB%98%E8%AE%A4%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/assorted/%E6%9B%B4%E6%94%B9eclipse%E9%BB%98%E8%AE%A4%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</guid>
       <description>eclipse使用的一点小技巧</description>
     </item>
     
     <item>
       <title>解决eclipse oxygen&#43;java 10&#43;Tomcat的Could not create the Java virtual machine问题</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/post/assorted/eclipse%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/assorted/eclipse%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Wed, 08 May 2019 20:54:58 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/post/assorted/eclipse%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/assorted/eclipse%E7%9A%84%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
       <description>eclipse使用的一点小技巧</description>
     </item>
     
