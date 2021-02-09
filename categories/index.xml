@@ -2,157 +2,157 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on cartoon&#39;s blog</title>
-    <link>https://cartoonyu.github.io/cartoon-blog/categories/</link>
+    <link>https://cartoonyu.github.io/cartoon-blog/post/categories/</link>
     <description>Recent content in Categories on cartoon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2021</copyright>
     <lastBuildDate>Wed, 28 Oct 2020 22:56:50 +0800</lastBuildDate>
     
-	<atom:link href="https://cartoonyu.github.io/cartoon-blog/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cartoonyu.github.io/cartoon-blog/post/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spring Cloud</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/spring-cloud/</link>
       <pubDate>Wed, 28 Oct 2020 22:56:50 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/spring-cloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>message queue</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/message-queue/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/message-queue/</link>
       <pubDate>Sun, 13 Sep 2020 22:31:34 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/message-queue/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/message-queue/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nginx</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/nginx/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/nginx/</link>
       <pubDate>Sun, 15 Dec 2019 22:44:19 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/nginx/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dubbo</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/dubbo/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/dubbo/</link>
       <pubDate>Sat, 09 Nov 2019 11:14:02 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/dubbo/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/dubbo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>项目管理</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</link>
       <pubDate>Thu, 17 Oct 2019 19:11:31 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/docker/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/docker/</link>
       <pubDate>Thu, 10 Oct 2019 20:18:23 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/docker/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JAVA</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/java/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/java/</link>
       <pubDate>Wed, 09 Oct 2019 22:37:49 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/java/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JSON</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/json/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/json/</link>
       <pubDate>Sat, 05 Oct 2019 17:03:45 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/json/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/json/</guid>
       <description></description>
     </item>
     
     <item>
       <title>interview question</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/interview-question/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/interview-question/</link>
       <pubDate>Fri, 21 Jun 2019 18:53:47 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/interview-question/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/interview-question/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Assorted</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/assorted/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/assorted/</link>
       <pubDate>Sat, 18 May 2019 13:55:51 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/assorted/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/assorted/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/git/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/git/</link>
       <pubDate>Wed, 08 May 2019 22:00:12 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/git/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Algorithms</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/algorithms/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/algorithms/</link>
       <pubDate>Wed, 08 May 2019 21:28:14 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/algorithms/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/algorithms/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/ubuntu/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/ubuntu/</link>
       <pubDate>Wed, 08 May 2019 21:28:14 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/ubuntu/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/ubuntu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/mysql/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/mysql/</link>
       <pubDate>Wed, 08 May 2019 21:20:38 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/mysql/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>eclipse</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/eclipse/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/eclipse/</link>
       <pubDate>Wed, 08 May 2019 20:56:42 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/eclipse/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/eclipse/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Android</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/categories/android/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/categories/android/</link>
       <pubDate>Wed, 08 May 2019 20:17:37 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/categories/android/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/categories/android/</guid>
       <description></description>
     </item>
     

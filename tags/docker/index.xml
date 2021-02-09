@@ -2,31 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on cartoon&#39;s blog</title>
-    <link>https://cartoonyu.github.io/cartoon-blog/tags/docker/</link>
+    <link>https://cartoonyu.github.io/cartoon-blog/post/tags/docker/</link>
     <description>Recent content in docker on cartoon&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights reserved - 2021</copyright>
     <lastBuildDate>Thu, 10 Oct 2019 20:18:23 +0800</lastBuildDate>
     
-	<atom:link href="https://cartoonyu.github.io/cartoon-blog/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cartoonyu.github.io/cartoon-blog/post/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker下配置nacos</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/docker/docker%E4%B8%8B%E9%85%8D%E7%BD%AEnacos/</link>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/post/docker/docker%E4%B8%8B%E9%85%8D%E7%BD%AEnacos/</link>
       <pubDate>Thu, 10 Oct 2019 20:18:23 +0800</pubDate>
       
-      <guid>https://cartoonyu.github.io/cartoon-blog/docker/docker%E4%B8%8B%E9%85%8D%E7%BD%AEnacos/</guid>
-      <description>docker真是个好东西</description>
-    </item>
-    
-    <item>
-      <title>Docker下配置nacos</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/docker/docker%E4%B8%8B%E9%85%8D%E7%BD%AEnacos/</link>
-      <pubDate>Thu, 10 Oct 2019 20:18:23 +0800</pubDate>
-      
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/docker/docker%E4%B8%8B%E9%85%8D%E7%BD%AEnacos/</guid>
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/post/docker/docker%E4%B8%8B%E9%85%8D%E7%BD%AEnacos/</guid>
       <description>docker真是个好东西</description>
     </item>
     
