@@ -14,11 +14,29 @@
     
     <item>
       <title>更换nginx默认端口以及配置文件位置</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/nginx/%E6%9B%B4%E6%8D%A2nginx%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 15 Dec 2019 22:44:19 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/nginx/%E6%9B%B4%E6%8D%A2nginx%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE/</guid>
+      <description>前言 近段时间在准备毕业设计的前期准备，基本确定了前后端分离的架构，于是就需要用到了nginx。 在之前nginx是放在docker上，所以没有</description>
+    </item>
+    
+    <item>
+      <title>更换nginx默认端口以及配置文件位置</title>
       <link>https://cartoonyu.github.io/cartoon-blog/post/nginx/%E6%9B%B4%E6%8D%A2nginx%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE/</link>
       <pubDate>Sun, 15 Dec 2019 22:44:19 +0800</pubDate>
       
       <guid>https://cartoonyu.github.io/cartoon-blog/post/nginx/%E6%9B%B4%E6%8D%A2nginx%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE/</guid>
       <description>前言 近段时间在准备毕业设计的前期准备，基本确定了前后端分离的架构，于是就需要用到了nginx。 在之前nginx是放在docker上，所以没有</description>
+    </item>
+    
+    <item>
+      <title>nginx中root与alias关键字的区别</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/nginx/nginx%E4%B8%ADroot%E4%B8%8Ealias%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sun, 20 Oct 2019 12:05:13 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/nginx/nginx%E4%B8%ADroot%E4%B8%8Ealias%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>警醒自己以后不要再犯</description>
     </item>
     
     <item>
