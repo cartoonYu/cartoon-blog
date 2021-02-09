@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="前言 在前后端交互的选择上，之前一直采用的是模板引擎(因为我只负责后端)。 而这次的一个算是作业吧，前后端都是我，所以就研究了一下JSON交互在">
+  
+  <meta property="og:title" content="JSON工具类的构建(前端版本)" />
+<meta property="og:description" content="前言 在前后端交互的选择上，之前一直采用的是模板引擎(因为我只负责后端)。 而这次的一个算是作业吧，前后端都是我，所以就研究了一下JSON交互在" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/" />
+<meta property="article:published_time" content="2019-10-05T17:03:45+08:00" />
+<meta property="article:modified_time" content="2019-10-05T17:03:45+08:00" />
+
+
+  <title>
+  
+       JSON工具类的构建(前端版本) | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/json"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JSON </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JSON工具类的构建(前端版本)</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Oct 5, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>3 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <h3 id="heading">前言</h3>
+<p>在前后端交互的选择上，之前一直采用的是模板引擎(因为我只负责后端)。
+而这次的一个算是作业吧，前后端都是我，所以就研究了一下JSON交互在java web的应用(主要是前端)。</p>
+<h3 id="heading-1">优缺点</h3>
+<p>因为我是先写后端版本的，所以优缺点部分请跳转至<a href="https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/">JSON工具类的构建(后端版本)</a>查看。</p>
+<h3 id="heading-2">对比</h3>
+<p>因为我对js也是几天速成系列，所以框架型的jq以及ajax也是处于概念上的理解以及皮毛型的应用。
+我所认识的主流的前端处理的ajax，所以就选用了ajax进行发送/接收解析json的处理。</p>
+<h3 id="heading-3">需求拆分</h3>
+<p>因为没有打算深入学习前端，所以对需求的划分以及功能实现只限于满足这次的作业。
+而我定义的功能/需求主要有两个</p>
+<ul>
+<li>外部函数只需进行传入接口url以及数据，接收并初步解析结果</li>
+<li>必须能进行get/post请求的发送以及接收</li>
+<li>只需要发送单实体数据</li>
+</ul>
+<h3 id="heading-4">格式设计</h3>
+<p>因为是请求型报文，所以只需要形成普通的json格式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;name&#34;</span>,
+    <span style="color:#f92672">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;password&#34;</span>,
+    <span style="color:#f92672">&#34;account&#34;</span>:<span style="color:#e6db74">&#34;account&#34;</span>
+}
+</code></pre></div><h3 id="heading-5">代码设计</h3>
+<p>因为我希望传入接口url以及数据既能完成数据的发送与接收，而个人觉得ajax的请求响应参数中不同的只是url以及发送/接收数据不同了（限本次的需要），所以就在内部构建了一个通用的ajax的函数。</p>
+<h3 id="heading-6">实际代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">transfer</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">data</span>){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> Array();
+    <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+        <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;POST&#34;</span>,
+        <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#a6e22e">url</span>,
+        <span style="color:#a6e22e">dataType</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;json&#34;</span>,
+        <span style="color:#a6e22e">async</span><span style="color:#f92672">:</span><span style="color:#66d9ef">false</span>,
+        <span style="color:#a6e22e">contentType</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;application/json;charset=utf-8&#34;</span>,
+        <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>),
+        <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">dataReturn</span>) {
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">temp</span><span style="color:#f92672">=</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">dataReturn</span>);
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dataObj</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">temp</span>);
+            <span style="color:#a6e22e">result</span>[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">dataObj</span>.<span style="color:#a6e22e">status</span>;
+            <span style="color:#a6e22e">result</span>[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">dataObj</span>.<span style="color:#a6e22e">object</span>;
+        }
+    });
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+}
+</code></pre></div><h3 id="heading-7">代码思路</h3>
+<ol>
+<li>外部函数传入url以及数据data，data为对象类型的数据</li>
+<li>构建ajax请求发送数据</li>
+<li>因返回的json报文主要有两项：状态status以及数据object，所以采用数组型的返回结果</li>
+<li>通过<a href="https://www.runoob.com/json/json-stringify.html">JSON.stringify</a>以及<a href="https://www.runoob.com/json/json-parse.html">JSON.parse</a>将返回的json字符串转换成对象</li>
+<li>根据键值拆分返回结果到3中定义的数组返回</li>
+<li>调用函数通过result[0]判断获取操作结果，result[1]获取操作的详细数据</li>
+</ol>
+<h3 id="heading-8">结果展示</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">clickLogin</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">userName</span><span style="color:#f92672">=</span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#userName&#34;</span>).<span style="color:#a6e22e">val</span>();
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">password</span><span style="color:#f92672">=</span><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#password&#34;</span>).<span style="color:#a6e22e">val</span>();
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span><span style="color:#f92672">=</span>{};
+    <span style="color:#a6e22e">data</span>[<span style="color:#e6db74">&#39;number&#39;</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">userName</span>;
+    <span style="color:#a6e22e">data</span>[<span style="color:#e6db74">&#39;password&#39;</span>]<span style="color:#f92672">=</span><span style="color:#a6e22e">password</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span><span style="color:#f92672">=</span><span style="color:#a6e22e">transfer</span>(<span style="color:#e6db74">&#34;/text_project/login&#34;</span>,<span style="color:#a6e22e">data</span>);
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">result</span>[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;200&#39;</span>){
+        window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/text_project/main&#34;</span>;
+    }
+    <span style="color:#66d9ef">else</span>{
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;error&#34;</span>);
+    }
+}
+</code></pre></div><h3 id="heading-9">不足之处</h3>
+<ol>
+<li>get请求的需求没有解决，曾经花了7个小时去研究解决，但是因为对js以及ajax不熟悉，知道问题所在，但是没有解决</li>
+<li>不同结果的处理没有过多的处理</li>
+<li>原本想构建一个统一的网络访问函数，但是由于get请求的未解决这个想法失败了</li>
+</ol>
+<h3 id="heading-10">后记</h3>
+<p>因为这次时间赶，所以只是几天速成系列，只追求能用。
+但是通过这次的速成，也学习到了怎么去快速掌握或满足自身需要的一些方法，也算是接触到不同方面，能在以后的JAVA后端的学习中有所对比借鉴吧。</p>
+<h3 id="heading-11">相关链接</h3>
+<p>这是我在前台发送/接收解析json的一点经验，我另外写了一篇文章：<a href="https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/">JSON工具类的构建(后端版本)</a>，配合使用会很香哦~</p>
+<p><strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong>转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/">https://cartoonyu.github.io/cartoon-blog/post/json/json工具类的构建前端版本/</a></strong></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/json" role="button">JSON </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>JSON工具类的构建(后端版本)</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

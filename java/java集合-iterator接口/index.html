@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="本篇文章为JAVA集合系列的第二篇，主要叙述Iterator迭代器的概念以及成员方法使用方法">
+  
+  <meta property="og:title" content="JAVA集合--Iterator接口" />
+<meta property="og:description" content="本篇文章为JAVA集合系列的第二篇，主要叙述Iterator迭代器的概念以及成员方法使用方法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-iterator%E6%8E%A5%E5%8F%A3/" />
+<meta property="article:published_time" content="2019-05-08T20:46:44+08:00" />
+<meta property="article:modified_time" content="2019-05-08T20:46:44+08:00" />
+
+
+  <title>
+  
+       JAVA集合--Iterator接口 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-iterator%E6%8E%A5%E5%8F%A3/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JAVA集合--Iterator接口</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>May 8, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>2 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p>    <strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong><!-- raw HTML omitted -->    转载请注明出处:https://cartoonyu.github.io/cartoon-blog</strong></p>
+<p>    上一篇文章中我在集合元素的遍历中已经有涉及到Iterator的普遍使用方法，但是并没有对此进行解释。
+    其实，Iterator来源于java.util包，也是属于Java集合框架中的一份子，不同于Collection（存放单一数据）和Map（存放具有映射关系的数据），Iterator主要用于集合元素的迭代输出，所以它的对象又被称为迭代器。</p>
+<p>    Iterator的方法包括：</p>
+<table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th align="right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean hasNext();</td>
+<td align="right">判断迭代器是否还有未遍历的元素</td>
+</tr>
+<tr>
+<td>E next();</td>
+<td align="right">返回迭代器中下一未遍历元素</td>
+</tr>
+<tr>
+<td>void remove();</td>
+<td align="right">移除迭代器上一遍历的元素</td>
+</tr>
+<tr>
+<td>void forEachRemaining(Consumer action)</td>
+<td align="right">以特定的Lambda表达式遍历元素</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注：void forEachRemaining(Consumer action)为Java 8新增的默认方法。</strong></p>
+<p>    下面是Iterator的实例化以及各方法的使用方法</p>
+<ul>
+<li>Iterator的实例化</li>
+</ul>
+<pre><code>Iterator it=c5.iterator();
+</code></pre><p>    Iterator本身不存在容纳对象的能力，它的对象必须依附于Collection对象。
+同时，一个Iterator对象只能使用一次，复用会导致<strong>java.util.ConcurrentModificationException</strong>。我还没搞懂为什么会这样，应该是关于设计模式的内容。</p>
+<ul>
+<li>boolean hasNext();以及next();</li>
+</ul>
+<pre><code>while(it.hasNext()) {
+	System.out.println(it.next());
+}
+</code></pre><pre><code>输出:5
+</code></pre><ul>
+<li>void remove();</li>
+</ul>
+<pre><code>while(it.hasNext()) {
+	System.out.println(it.next());
+	it.remove();
+}
+</code></pre><pre><code>输出：5
+</code></pre><p>    remove方法要在next方法之后调用，次序调换会导致<strong>java.lang.IllegalStateException</strong>。</p>
+<ul>
+<li>void forEachRemaining(Consumer action);</li>
+</ul>
+<pre><code>Iterator it=c5.iterator();
+it.forEachRemaining(obj-&gt;System.out.println(obj));
+</code></pre><pre><code>输出：5
+</code></pre><p>    通过特定的Lambda表达式格式输出元素。</p>
+<p>     Iterator接口就写到这里了。通常我都是用它作为测试Collection对象的，好处就是不用通过循环遍历，代码量会少一点。但是正式使用我还是会使用循环遍历Collection对象，虽则代码量多，但是可以省掉一个对象的内存空间，能省一点是一点，哈哈！</p>
+<p>    如果你还想了解关于java集合的内容，欢迎点击<a href="%5Bhttps://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/%5D(https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/)">JAVA集合概述</a></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-collection%E6%8E%A5%E5%8F%A3/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>JAVA集合--Collection接口</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/java/stackarraydequelinkedlist%E7%9A%84%E5%8C%BA%E5%88%AB/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Stack，ArrayDeque，LinkedList的区别</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

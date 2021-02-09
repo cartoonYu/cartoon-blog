@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="很奇怪，也很神奇">
+  
+  <meta property="og:title" content="For与while时间的对比" />
+<meta property="og:description" content="很奇怪，也很神奇" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/post/java/for%E4%B8%8Ewhile%E6%97%B6%E9%97%B4%E7%9A%84%E5%AF%B9%E6%AF%94/" />
+<meta property="article:published_time" content="2019-06-24T17:21:10+08:00" />
+<meta property="article:modified_time" content="2019-06-24T17:21:10+08:00" />
+
+
+  <title>
+  
+       For与while时间的对比 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/post/java/for%E4%B8%8Ewhile%E6%97%B6%E9%97%B4%E7%9A%84%E5%AF%B9%E6%AF%94/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">For与while时间的对比</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jun 24, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>2 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p><strong>    本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<!-- raw HTML omitted -->    <strong>转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/java/for%E4%B8%8Ewhile%E6%97%B6%E9%97%B4%E7%9A%84%E5%AF%B9%E6%AF%94/">https://cartoonyu.github.io/cartoon-blog/post/java/for%E4%B8%8Ewhile%E6%97%B6%E9%97%B4%E7%9A%84%E5%AF%B9%E6%AF%94/</a></strong></p>
+<p>    <strong>相关文章:<a href="https://cartoonyu.github.io/cartoon-blog/">JAVA遍历机制的性能的比较</a></strong></p>
+<h4 id="heading">前言</h4>
+<p>索引随机访问数组相信是很常见的操作.</p>
+<p>但是昨天在做leetcode的<a href="https://github.com/cartoonYu/LeetCodeSolution/blob/master/Solution/src/Solution344.java">Reverse String</a>时，发现了很奇怪的现象，具体如下图</p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/101.png" alt="for与while时间对比图"></p>
+<p>当时我也觉得不可思议，怎么快了那么多，所以今天复盘一下。</p>
+<h4 id="heading-1">正文</h4>
+<p><em><strong>注：这篇文章只涉及原始数组的索引遍历，不涉及包装数据结构以及foreach</strong></em></p>
+<h5 id="heading-2">测试代码</h5>
+<ul>
+<li>for</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">textFor</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> data<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>1000<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#f92672">;</span>i<span style="color:#f92672">&lt;</span>1000<span style="color:#f92672">;</span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            data<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">=</span>i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">long</span> start<span style="color:#f92672">=</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#f92672">;</span>i<span style="color:#f92672">&lt;</span>1000<span style="color:#f92672">;</span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>data<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">long</span> end<span style="color:#f92672">=</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;for use:&#34;</span><span style="color:#f92672">+</span><span style="color:#f92672">(</span>end<span style="color:#f92672">-</span>start<span style="color:#f92672">)</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;ms&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>while</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">textWhile</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span><span style="color:#f92672">]</span> data<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>1000<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#f92672">;</span>i<span style="color:#f92672">&lt;</span>1000<span style="color:#f92672">;</span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            data<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">=</span>i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">long</span> start<span style="color:#f92672">=</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>i<span style="color:#f92672">&lt;</span>1000<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>data<span style="color:#f92672">[</span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">]</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">long</span> end<span style="color:#f92672">=</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;while use:&#34;</span><span style="color:#f92672">+</span><span style="color:#f92672">(</span>end<span style="color:#f92672">-</span>start<span style="color:#f92672">)</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;ms&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h5 id="heading-3">结果</h5>
+<pre><code>for use:35ms
+while use:15ms
+
+for use:14ms
+while use:6ms
+
+for use:14ms
+while use:8ms
+
+for use:20ms
+while use:5ms
+</code></pre><p><em><strong>所用时间可能不一样，但是大概比例应该跟我的差不多</strong></em></p>
+<p>有点意外的是，while比for竟然要少一倍(大概)的时间，颠覆了我之前的认知。</p>
+<h5 id="heading-4">结果分析</h5>
+<p>虽然我没有debug代码，但是我猜测是循环执行语句的多少差别。</p>
+<p>for中，执行顺序是</p>
+<ul>
+<li>判断循环变量是否越界</li>
+<li>执行打印语句</li>
+<li>循环变量自增</li>
+</ul>
+<p>while中，执行顺序是</p>
+<ul>
+<li>判断循环变量是否越界</li>
+<li>执行打印语句，循环变量自增</li>
+</ul>
+<p>与for相比，while所执行的语句量少掉1/3，所以我觉得这就是原因。(如果有更好的原因可以评论或者发起Issue)</p>
+<h4 id="heading-5">后话</h4>
+<p>生命不息，技术不止。</p>
+<p>很多时候我也为了代码量的减少不理会运行时间的差异，这次吸收教训，之后在实际开发会更加注意时间。</p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/post/java/object%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BD%9C%E7%94%A8/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Object的成员方法以及作用</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/post/java/%E6%97%A0%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%9C%89%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>&gt;&gt;与&gt;&gt;&gt;的区别</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JSON on cartoon&#39;s blog</title>
+    <link>https://cartoonyu.github.io/cartoon-blog/tags/json/</link>
+    <description>Recent content in JSON on cartoon&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2021</copyright>
+    <lastBuildDate>Sat, 05 Oct 2019 17:03:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://cartoonyu.github.io/cartoon-blog/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JSON工具类的构建(前端版本)</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/</link>
+      <pubDate>Sat, 05 Oct 2019 17:03:45 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/</guid>
+      <description>前言 在前后端交互的选择上，之前一直采用的是模板引擎(因为我只负责后端)。 而这次的一个算是作业吧，前后端都是我，所以就研究了一下JSON交互在</description>
+    </item>
+    
+    <item>
+      <title>JSON工具类的构建(前端版本)</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/</link>
+      <pubDate>Sat, 05 Oct 2019 17:03:45 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/</guid>
+      <description>前言 在前后端交互的选择上，之前一直采用的是模板引擎(因为我只负责后端)。 而这次的一个算是作业吧，前后端都是我，所以就研究了一下JSON交互在</description>
+    </item>
+    
+    <item>
+      <title>JSON工具类的构建(后端版本)</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/</link>
+      <pubDate>Sat, 05 Oct 2019 14:14:20 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/</guid>
+      <description>强迫症的我关于前后端交互的一点心得</description>
+    </item>
+    
+    <item>
+      <title>JSON工具类的构建(后端版本)</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/</link>
+      <pubDate>Sat, 05 Oct 2019 14:14:20 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/</guid>
+      <description>强迫症的我关于前后端交互的一点心得</description>
+    </item>
+    
+  </channel>
+</rss>

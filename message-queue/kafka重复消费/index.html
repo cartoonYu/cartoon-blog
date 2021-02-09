@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="近段时间学习极客时间李玥老师的后端存储实战课时，看到一个很多意思的东西：用kafka存储点击流的数据，并重复处理。在以往的使用中，kafka">
+  
+  <meta property="og:title" content="kafka数据如何被重复消费" />
+<meta property="og:description" content="近段时间学习极客时间李玥老师的后端存储实战课时，看到一个很多意思的东西：用kafka存储点击流的数据，并重复处理。在以往的使用中，kafka" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/message-queue/kafka%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9/" />
+<meta property="article:published_time" content="2020-09-13T22:31:34+08:00" />
+<meta property="article:modified_time" content="2020-09-13T22:31:34+08:00" />
+
+
+  <title>
+  
+       kafka数据如何被重复消费 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/message-queue/kafka%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/message-queue"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> message queue </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">kafka数据如何被重复消费</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Sep 13, 2020</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>2 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p>近段时间学习极客时间李玥老师的后端存储实战课时，看到一个很多意思的东西：用kafka存储点击流的数据，并重复处理。在以往的使用中，kafka只是一个消息传输的载体，消息被消费后就不能再次消费。新知识与印象相冲突，于是就有了本篇文章：kafka数据如何被重复消费。</p>
+<h5 id="heading">前期理论了解</h5>
+<p>首先我先去官网纠正了我对kafka的整体了解。</p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20200913143129.png" alt=""></p>
+<p>官网对kafka的描述是：一个分布式流平台。怪自己的学艺不精。</p>
+<p>其次，我重新看了一下kafka消费者的消费过程：kafka首先通过push/poll（默认为poll）获取消息，接收消息处理完成后手动/自动提交消费成功，kafka服务器则根据提交情况决定是否移动当前偏移量。</p>
+<h5 id="heading-1">方案确定</h5>
+<p>kafka消费者读取数据的位置是通过偏移量判断，那如果我能将偏移量手动设置为起始位置，就能实现重复消费？这个有搞头。</p>
+<p>如何手动设置偏移量是关键。</p>
+<h5 id="show-me-the-code">show me the code</h5>
+<p>代码的关键主要在于偏移量设置 api 的调用，其余没什么特别。</p>
+<p>要注意的是，代码中我分别调用了作用不同的设置偏移量，仅作为展示，可按需取用。</p>
+<p>最后消费者消息消息时，我只使用默认的拉取条数设置消费一次，可按需进行修改。</p>
+<pre><code>/**
+ * repeat kafka message
+ * @param host kafka host
+ * @param groupId kafka consumer group id
+ * @param autoCommit whether auto commit consume
+ * @param topic consume topic
+ * @param consumeTimeOut consume time out
+*/
+    private void textResetOffset(String host, String groupId, Boolean autoCommit, String topic, Long consumeTimeOut){
+        //form a properties to new consumer
+        Properties properties = new Properties();
+        properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, host);
+        properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, autoCommit.toString());
+        properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        KafkaConsumer&lt;String, String&gt; consumer = new KafkaConsumer&lt;&gt;(properties);
+        //subscribe incoming topic
+        consumer.subscribe(Collections.singletonList(topic));
+        //get consumer consume partitions
+        List&lt;PartitionInfo&gt; partitionInfos = consumer.partitionsFor(topic);
+        List&lt;TopicPartition&gt; topicPartitions = new ArrayList&lt;&gt;();
+        for(PartitionInfo partitionInfo : partitionInfos){
+            TopicPartition topicPartition = new TopicPartition(partitionInfo.topic(), partitionInfo.partition());
+            topicPartitions.add(topicPartition);
+        }
+        // poll data from kafka server to prevent lazy operation
+        consumer.poll(Duration.ofSeconds(consumeTimeOut));
+        //reset offset from beginning
+        consumer.seekToBeginning(topicPartitions);
+        //reset designated partition offset by designated spot
+        int offset = 20;
+        consumer.seek(topicPartitions.get(0), offset);
+        //reset offset to end
+        consumer.seekToEnd(topicPartitions);
+        //consume message as usual
+        ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.ofSeconds(1));
+        Iterator&lt;ConsumerRecord&lt;String, String&gt;&gt; iterator = records.iterator();
+        while (iterator.hasNext()){
+            ConsumerRecord&lt;String, String&gt; record = iterator.next();
+            log.info(&quot;consume data: {}&quot;, record.value());
+        }
+    }
+</code></pre><h5 id="heading-2">运行结果</h5>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20200913153040.png" alt=""></p>
+<h5 id="heading-3">需注意的点</h5>
+<p>在手动设置偏移量时，遇到了一个exception</p>
+<pre><code>java.lang.IllegalStateException: No current assignment for partition test-0
+</code></pre><p>翻了一下<a href="https://stackoverflow.com/questions/41008610/kafkaconsumer-0-10-java-api-error-message-no-current-assignment-for-partition">stackoverflow</a>以及<a href="http://kafka.apache.org/0102/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html">官方文档</a>后，才了解到设置偏移量是一个lazy operation，官网的解释如下。</p>
+<blockquote>
+<p>Seek to the first offset for each of the given partitions. This function evaluates lazily, seeking to the first offset in all partitions only when <a href="http://kafka.apache.org/0102/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html#poll(long)"><code>poll(long)</code></a> or <a href="http://kafka.apache.org/0102/javadoc/org/apache/kafka/clients/consumer/KafkaConsumer.html#position(org.apache.kafka.common.TopicPartition)"><code>position(TopicPartition)</code></a> are called. If no partition is provided, seek to the first offset for all of the currently assigned partitions.</p>
+</blockquote>
+<p>于是我先进行一次 poll 操作后再设置偏移量。</p>
+<p><strong>    本文首发于 <a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<!-- raw HTML omitted -->    转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/message-queue/kafka%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%A2%AB%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9/">https://cartoonyu.github.io/cartoon-blog/post/message-queue/kafka数据如何被重复消费/</a></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/message-queue" role="button">message queue </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

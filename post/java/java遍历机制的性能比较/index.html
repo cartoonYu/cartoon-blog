@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="对JAVA遍历机制的性能的一点比较">
+  
+  <meta property="og:title" content="JAVA遍历机制的性能的比较" />
+<meta property="og:description" content="对JAVA遍历机制的性能的一点比较" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%81%8D%E5%8E%86%E6%9C%BA%E5%88%B6%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/" />
+<meta property="article:published_time" content="2019-06-08T23:58:58+08:00" />
+<meta property="article:modified_time" content="2019-06-08T23:58:58+08:00" />
+
+
+  <title>
+  
+       JAVA遍历机制的性能的比较 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%81%8D%E5%8E%86%E6%9C%BA%E5%88%B6%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JAVA遍历机制的性能的比较</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jun 8, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>5 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p><strong>    本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<!-- raw HTML omitted -->    <strong>转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%81%8D%E5%8E%86%E6%9C%BA%E5%88%B6%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/">https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%81%8D%E5%8E%86%E6%9C%BA%E5%88%B6%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/</a></strong></p>
+<h3 id="heading">缘由</h3>
+<p>    近段时间在写leetcode的<a href="https://github.com/cartoonYu/LeetCodeSolution/blob/master/Solution/src/Solution860.java">Lemonade Change</a>时候，发现了for循环与forEach循环的耗时是不一致的，在提交记录上面差了一倍&hellip;&hellip;</p>
+<p>    平常开发绝大部分业务逻辑的实现都需要遍历机制的帮忙，虽说也有注意到各数据结构操作的性能比较，但是忽视了遍历机制性能的差异。原本前两天就开始动手写，拖延症&hellip;&hellip;</p>
+<h3 id="heading-1">正文</h3>
+<p>    现阶段我所知道JAVA遍历机制有三种</p>
+<ul>
+<li>
+<p>for循环</p>
+</li>
+<li>
+<p>forEach循环</p>
+</li>
+<li>
+<p>Iterator循环</p>
+</li>
+</ul>
+<p>    JAVA数据结构千千万，但是大部分都是对基础数据结构的封装，比较HashMap依赖于Node数组，LinkedList底层是链表，ArrayList对数组的再封装&hellip;&hellip;扯远了</p>
+<p>    总结来说，JAVA的基础数据结构，我觉得有两种</p>
+<ul>
+<li>数组</li>
+<li>链表</li>
+</ul>
+<p>    如果是加上Hash(Hash的操作与数组以及链表不太一致)，就是三种</p>
+<p>    因为平常开发大部分都优先选择包装后的数据结构，所以下面我会使用</p>
+<ul>
+<li>ArrayList(包装后的数组)</li>
+<li>LinkedList(包装后的链表)</li>
+<li>HashSet(包装后的Hash类型数组)</li>
+</ul>
+<p>    这三种数据结构在遍历机制不同的时候时间的差异</p>
+<p>    可能有人对我为什么不对比HashMap呢，因为JAVA设计中，是先实现了Map，再实现Set。如果你有阅读过源码就会发现:每个Set子类的实现中，都有一个序列化后的Map对应属性实现，而因为Hash的查找时间复杂度为O(1)，得出key后查找value的时间大致是一致的，所以我不对比HashMap。</p>
+<p><em><strong>题外话</strong></em></p>
+<p><em><strong>    我在阅读《疯狂JAVA》读到:JAVA的设计者将Map的内部entry数组中的value设为null进而实现了Set。因为我是以源码以及官方文档为准，具体我不清楚正确与否，但是因为Hash中的key互不相同，Set中元素也互不相同，所以我认为这个观点是正确的。</strong></em></p>
+<p>    为了测试的公平性，我会采取以下的限定</p>
+<ul>
+<li>每种数据结构的大小都设置三种量级
+<ul>
+<li>10</li>
+<li>100</li>
+<li>1000</li>
+</ul>
+</li>
+<li>元素都采用随机数生成</li>
+<li>遍历进行操作都为输出当前元素的值</li>
+</ul>
+<p><strong>    注:时间开销受本地环境的影响，可能测量值会出现变化，但是总体上比例是正确的</strong></p>
+<h4 id="arraylist">ArrayList的比较</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code>public class TextArray {
+  
+    private static Random random;
+  
+    private static List&lt;Integer&gt; list1;
+  
+    private static List&lt;Integer&gt; list2;
+  
+    private static List&lt;Integer&gt; list3;
+  
+    public static void execute(){
+        random=new Random();
+        initArray();
+        testForWith10Object();
+        testForEachWith10Object();
+        testIteratorWith10Object();
+        testForWith100Object();
+        testForEachWith100Object();
+        testIteratorWith100Object();
+        testForWith1000Object();
+        testForEachWith1000Object();
+        testIteratorWith1000Object();
+    }
+  
+    private static void testForWith10Object(){
+        printFor(list1);
+    }
+  
+    private static void testForWith100Object(){
+        printFor(list2);
+    }
+  
+    private static void testForWith1000Object(){
+        printFor(list3);
+    }
+  
+    private static void testForEachWith10Object(){
+        printForeach(list1);
+    }
+  
+    private static void testForEachWith100Object(){
+        printForeach(list2);
+    }
+  
+    private static void testForEachWith1000Object(){
+        printForeach(list3);
+    }
+  
+    private static void testIteratorWith10Object() {
+        printIterator(list1);
+    }
+  
+    private static void testIteratorWith100Object() {
+        printIterator(list2);
+    }
+  
+    private static void testIteratorWith1000Object() {
+        printIterator(list3);
+    }
+  
+    private static void printFor(List&lt;Integer&gt; list){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        long start=System.currentTimeMillis();
+        for(int i=0,length=list.size();i&lt;length;i++){
+            System.out.print(list.get(i)+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;for for &quot;+list.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+    private static void printForeach(List&lt;Integer&gt; list){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        long start=System.currentTimeMillis();
+        for(int temp:list){
+            System.out.print(temp+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;foreach for &quot;+list.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+    private static void printIterator(List&lt;Integer&gt; list){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        Iterator&lt;Integer&gt; it=list.iterator();
+        long start=System.currentTimeMillis();
+        while(it.hasNext()){
+            System.out.print(it.next()+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;iterator for &quot;+list.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+    private static void initArray(){
+        list1=new ArrayList&lt;&gt;();
+        list2=new ArrayList&lt;&gt;();
+        list3=new ArrayList&lt;&gt;();
+        for(int i=0;i&lt;10;i++){
+            list1.add(random.nextInt());
+        }
+        for(int i=0;i&lt;100;i++){
+            list2.add(random.nextInt());
+        }
+        for(int i=0;i&lt;1000;i++){
+            list3.add(random.nextInt());
+        }
+    }
+}
+</code></pre><pre><code>
+   
+
+</code></pre></li>
+<li>
+<p>输出(忽略对元素的输出)</p>
+<pre><code>for for 10:1ms
+foreach for 10:0ms
+iterator for 10:2ms
+  
+for for 100:5ms
+foreach for 100:4ms
+iterator for 100:12ms
+  
+for for 1000:33ms
+foreach for 1000:7ms
+iterator for 1000:16ms
+</code></pre><pre><code>   
+   
+   
+ |          | 10   | 100  | 1000 |
+ | -------- | ---- | ---- | ---- |
+ | for      | 1ms  | 5ms  | 33ms |
+ | forEach  | 0ms  | 4ms  | 7ms  |
+ | Iterator | 2ms  | 12ms | 16ms |
+   
+   
+   
+   
+
+</code></pre></li>
+<li>
+<p>结论</p>
+<p><strong>    for的性能最不稳定，foreach次之，Iterator最好</strong></p>
+</li>
+<li>
+<p>使用建议</p>
+<ol>
+<li>
+<p>在数据量不明确的情况下(可能1w,10w或其他)，建议使用Iterator进行遍历</p>
+</li>
+<li>
+<p>在数据量明确且量级小的时候，优先使用foreach</p>
+</li>
+<li>
+<p>需要使用索引时，使用递增变量的开销比for的要小</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="linkedlist">LinkedList的比较</h4>
+<ul>
+<li>
+<p>代码</p>
+<pre><code>public class TextLinkedList {
+  
+    private static Random random;
+  
+    private static List&lt;Integer&gt; list1;
+  
+    private static List&lt;Integer&gt; list2;
+  
+    private static List&lt;Integer&gt; list3;
+  
+    public static void execute(){
+        random=new Random();
+        initList();
+        testForWith10Object();
+        testForEachWith10Object();
+        testIteratorWith10Object();
+        testForWith100Object();
+        testForEachWith100Object();
+        testIteratorWith100Object();
+        testForWith1000Object();
+        testForEachWith1000Object();
+        testIteratorWith1000Object();
+    }
+  
+    private static void testForWith10Object() {
+        printFor(list1);
+    }
+  
+    private static void testForEachWith10Object() {
+        printForeach(list1);
+    }
+  
+    private static void testIteratorWith10Object() {
+        printIterator(list1);
+    }
+  
+    private static void testForWith100Object() {
+        printFor(list2);
+    }
+  
+    private static void testForEachWith100Object() {
+        printForeach(list2);
+    }
+  
+    private static void testIteratorWith100Object() {
+        printIterator(list2);
+    }
+  
+    private static void testForWith1000Object() {
+        printFor(list3);
+    }
+  
+    private static void testForEachWith1000Object() {
+        printForeach(list3);
+    }
+  
+    private static void testIteratorWith1000Object() {
+        printIterator(list3);
+    }
+  
+    private static void printFor(List&lt;Integer&gt; list){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        long start=System.currentTimeMillis();
+        for(int i=0,size=list.size();i&lt;size;i++){
+            System.out.print(list.get(i));
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;for for &quot;+list.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+    private static void printForeach(List&lt;Integer&gt; list){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        long start=System.currentTimeMillis();
+        for(int temp:list){
+            System.out.print(temp+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;foreach for &quot;+list.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+    private static void printIterator(List&lt;Integer&gt; list){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        Iterator&lt;Integer&gt; it=list.iterator();
+        long start=System.currentTimeMillis();
+        while(it.hasNext()){
+            System.out.print(it.next()+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;iterator for &quot;+list.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+  
+    private static void initList() {
+        list1=new LinkedList&lt;&gt;();
+        list2=new LinkedList&lt;&gt;();
+        list3=new LinkedList&lt;&gt;();
+        for(int i=0;i&lt;10;i++){
+            list1.add(random.nextInt());
+        }
+        for(int i=0;i&lt;100;i++){
+            list2.add(random.nextInt());
+        }
+        for(int i=0;i&lt;1000;i++){
+            list3.add(random.nextInt());
+        }
+    }
+}
+</code></pre></li>
+<li>
+<p>输出(忽略对元素的输出)</p>
+<pre><code>for for 10:0ms
+foreach for 10:1ms
+iterator for 10:0ms
+  
+for for 100:1ms
+foreach for 100:0ms
+iterator for 100:3ms
+  
+for for 1000:23ms
+foreach for 1000:25ms
+iterator for 1000:4ms
+</code></pre><pre><code>   
+   
+   
+ |          | 10   | 100  | 1000 |
+ | -------- | ---- | ---- | ---- |
+ | for      | 0ms  | 1ms  | 23ms |
+ | forEach  | 1ms  | 0ms  | 25ms |
+ | Iterator | 0ms  | 3ms  | 4ms  |
+   
+   
+
+</code></pre></li>
+<li>
+<p>结论</p>
+<p><strong>    foreach的性能最不稳定，for次之，Iterator最好</strong></p>
+</li>
+<li>
+<p>使用建议</p>
+<ol>
+<li>
+<p>尽量使用Iterator进行遍历</p>
+</li>
+<li>
+<p>需要使用索引时，使用递增变量的开销比for的要小</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="hashset">HashSet的比较</h4>
+<p><em><strong>    注：因Hash遍历算法与其他类型不一致，所以取消了for循环的比较</strong></em></p>
+<ul>
+<li>
+<p>代码</p>
+<pre><code>public class TextHash {
+  
+    private static Random random;
+  
+    private static Set&lt;Integer&gt; set1;
+  
+    private static Set&lt;Integer&gt; set2;
+  
+    private static Set&lt;Integer&gt; set3;
+  
+    public static void execute(){
+        random=new Random();
+        initHash();
+        testIteratorWith10Object();
+        testForEachWith10Object();
+        testIteratorWith100Object();
+        testForEachWith100Object();
+        testIteratorWith1000Object();
+        testForEachWith1000Object();
+    }
+  
+    private static void testIteratorWith10Object() {
+        printIterator(set1);
+    }
+  
+    private static void testForEachWith10Object() {
+        printForeach(set1);
+    }
+  
+    private static void testIteratorWith100Object() {
+        printIterator(set2);
+    }
+  
+    private static void testForEachWith100Object() {
+        printForeach(set2);
+    }
+  
+    private static void testIteratorWith1000Object() {
+        printIterator(set3);
+    }
+  
+    private static void testForEachWith1000Object() {
+        printForeach(set3);
+    }
+  
+    private static void initHash() {
+        set1=new HashSet&lt;&gt;();
+        set2=new HashSet&lt;&gt;();
+        set3=new HashSet&lt;&gt;();
+        for(int i=0;i&lt;10;i++){
+            set1.add(random.nextInt());
+        }
+        for(int i=0;i&lt;100;i++){
+            set2.add(random.nextInt());
+        }
+        for(int i=0;i&lt;1000;i++){
+            set3.add(random.nextInt());
+        }
+    }
+  
+    private static void printIterator(Set&lt;Integer&gt; data){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        long start=System.currentTimeMillis();
+        Iterator&lt;Integer&gt; it=data.iterator();
+        while (it.hasNext()){
+            System.out.print(it.next()+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;iterator for &quot;+data.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+  
+    private static void printForeach(Set&lt;Integer&gt; data){
+        System.out.println();
+        System.out.print(&quot;data:&quot;);
+        long start=System.currentTimeMillis();
+        for(int temp:data){
+            System.out.print(temp+&quot; &quot;);
+        }
+        System.out.println();
+        long end=System.currentTimeMillis();
+        System.out.println(&quot;foreach for &quot;+data.size()+&quot;:&quot;+(end-start)+&quot;ms&quot;);
+    }
+}
+</code></pre></li>
+<li>
+<p>输出(忽略对元素的输出)</p>
+<pre><code>iterator for 10:0ms
+foreach for 10:0ms
+  
+iterator for 100:6ms
+foreach for 100:0ms
+  
+iterator for 1000:30ms
+foreach for 1000:9ms
+</code></pre><pre><code>
+   
+
+ |          | 10   | 100  | 1000 |
+ | -------- | ---- | ---- | ---- |
+ | foreach  | 0ms  | 0ms  | 9ms  |
+ | Iterator | 0ms  | 6ms  | 30ms |
+
+   
+
+</code></pre></li>
+<li>
+<p>结论</p>
+<p><strong>    foreach性能遥遥领先于Iterator</strong></p>
+</li>
+<li>
+<p>使用建议</p>
+<p>    以后就选foreach了，性能好，写起来也方便。</p>
+</li>
+</ul>
+<h3 id="heading-2">总结</h3>
+<ol>
+<li>for循环性能在三者的对比中总体落于下风，而且开销递增幅度较大。以后即使在需要使用索引时我宁愿使用递增变量也不会使用for了。</li>
+<li>Iterator的性能在数组以及链表的表现都是最好的，应该是JAVA的设计者优化过了。在响应时间敏感的情况下(例如web响应)，优先考虑。</li>
+<li>foreach的性能属于两者之间，写法简单，时间不敏感的情况下我会尽量选用。</li>
+</ol>
+<p>    以上就是我对常见数据结构遍历机制的一点比较，虽然只是很初步，但是从中我也学到了很多东西，希望你们也有所收获。</p>
+<p>    如果你喜欢本文章，可以收藏阅读，如果你对我的其他文章感兴趣，欢迎到<a href="https://cartoonyu.github.io/cartoon-blog/">我的博客</a>查看。</p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/post/assorted/4%E7%A7%8D%E6%9E%81%E5%A4%A7%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87%E7%9A%84%E5%B7%A5%E5%85%B7/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>4种极大提升学习效率的工具</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/post/java/collections/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Collections工具类的概述以及用法</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="在没了解之前认为两个是一样的，只是java设计者的重复定义，了解过之后才发现java设计者思想之深">
+  
+  <meta property="og:title" content="Queue与Deque的区别" />
+<meta property="og:description" content="在没了解之前认为两个是一样的，只是java设计者的重复定义，了解过之后才发现java设计者思想之深" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/java/queue%E4%B8%8Edeque%E7%9A%84%E5%8C%BA%E5%88%AB/" />
+<meta property="article:published_time" content="2019-09-29T21:49:34+08:00" />
+<meta property="article:modified_time" content="2019-09-29T21:49:34+08:00" />
+
+
+  <title>
+  
+       Queue与Deque的区别 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/java/queue%E4%B8%8Edeque%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">Queue与Deque的区别</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Sep 29, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>5 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <h3 id="heading">前言</h3>
+<p>​	在研究java集合源码的时候，发现了一个很少用但是很有趣的点：Queue以及Deque，平常在写leetcode经常用LinkedList向上转型Deque作为栈或者队列使用，但是一直都不知道Queue的作用，于是就直接官方文档好了。</p>
+<h3 id="heading-1">正文</h3>
+<h4 id="heading-2">概念</h4>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/1398594969-5cce5e9ada73d_articlex.jpg" alt=""></p>
+<p>从上图看出，Queue以及Deque都是继承于Collection，Deque是Queue的子接口。</p>
+<p>下面来看一下官方文档的解释。</p>
+<blockquote>
+<p>A linear collection that supports element insertion and removal at both ends. The name <em>deque</em> is short for &ldquo;double ended queue&rdquo; and is usually pronounced &ldquo;deck&rdquo;. Most <code>Deque</code> implementations place no fixed limits on the number of elements they may contain, but this interface supports capacity-restricted deques as well as those with no fixed size limit.</p>
+</blockquote>
+<blockquote>
+<p>A collection designed for holding elements prior to processing. Besides basic <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html"><code>Collection</code></a> operations, queues provide additional insertion, extraction, and inspection operations. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either <code>null</code> or <code>false</code>, depending on the operation). The latter form of the insert operation is designed specifically for use with capacity-restricted <code>Queue</code> implementations; in most implementations, insert operations cannot fail.</p>
+</blockquote>
+<p>从Deque的解释中，我们可以得知：Deque是double ended queue，我将其理解成双端结束的队列，双端队列，可以在首尾插入或删除元素。而Queue的解释中，Queue就是简单的FIFO队列。</p>
+<p>所以在概念上来说，Queue是FIFO的单端队列，Deque是双端队列。</p>
+<p>而在使用上，又有什么差别呢？</p>
+<h4 id="heading-3">使用</h4>
+<p>从上图我们可以得知，Queue有一个直接子类PriorityQueue，而Deque中直接子类有两个：LinkedList以及ArrayDeque。</p>
+<ul>
+<li>PriorityQueue</li>
+</ul>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926005502.png" alt=""></p>
+<p>我觉得重点就在圈定的两个单词：无边界的，优先级的堆。然后再看看源码</p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926005714.png" alt=""><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926010300.png" alt=""></p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926010034.png" alt=""></p>
+<p>在第一张图片的源码中，明显看到PriorityQueue的底层数据结构是数组，而无边界的形容，那么指明了PriorityQueue是自带扩容机制的，具体请看PriorityQueue的grow方法。</p>
+<p>在第二张第三张图片中，可以看到插入元素的时候是需要经过compareTo的处理，那么最常用就是一些范围极值的输出，类似于堆排序的用法。</p>
+<p>下面演示一下正反序输出三个元素的使用</p>
+<pre><code>private static void negativePrint(int[] nums) {
+        PriorityQueue&lt;Integer&gt; queue=new PriorityQueue&lt;&gt;(new Comparator&lt;Integer&gt;() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+        for(int temp:nums){
+            queue.add(temp);
+        }
+        System.out.println();
+        System.out.print(&quot;倒序输出：&quot;);
+        for(int i=0;i&lt;3;i++){
+            System.out.print(queue.poll()+&quot; &quot;);
+        }
+    }
+
+    private static void positivePrint(int[] nums){
+        PriorityQueue&lt;Integer&gt; queue=new PriorityQueue&lt;&gt;();
+        for(int temp:nums){
+            queue.add(temp);
+        }
+        System.out.print(&quot;正序输出：&quot;);
+        for(int i=0;i&lt;3;i++){
+            System.out.print(queue.poll()+&quot; &quot;);
+        }
+    }
+</code></pre><pre><code>正序输出：1 2 3 
+倒序输出：9 8 8 
+</code></pre><p>这个在一些排行榜或者输入第N个最大/小元素会比较常用。</p>
+<ul>
+<li>LinkedList以及ArrayDeque</li>
+</ul>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926011817.png" alt=""></p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926011948.png" alt=""></p>
+<p>从官方解释来看，ArrayDeque是无初始容量的双端队列，LinkedList则是双向链表。而我们还能看到，ArrayDeque作为队列时的效率比LinkedList要高，而在栈的使用场景下，无疑具有尾结点不需判空的LinkedList较高效。</p>
+<p>下面演示ArrayDeque作为队列以及LinkedList作为栈的使用</p>
+<pre><code>private static void usingAsQueue() {
+        Deque&lt;Integer&gt; queue=new ArrayDeque&lt;&gt;();
+        System.out.println(&quot;队列为空:&quot;+queue.isEmpty());   //判断队列是否为空
+        queue.addLast(12);   //添加元素
+        System.out.println(&quot;队列为空:&quot;+queue.isEmpty());   //判断队列是否为空
+        System.out.println(queue.peekFirst());   //获取队列首部元素
+        System.out.println(queue.pollFirst());   //获取并移除栈顶元素
+        System.out.println(&quot;队列为空:&quot;+queue.isEmpty());   //判断队列是否为空
+ }
+
+private static void usingAsStack() {
+        //作为栈使用
+        Deque&lt;Integer&gt; stack=new LinkedList&lt;&gt;();
+        System.out.println(&quot;栈为空:&quot;+stack.isEmpty());   //判断栈是否为空
+        stack.addFirst(12);
+        System.out.println(&quot;栈为空:&quot;+stack.isEmpty());   //判断栈是否为空
+        System.out.println(stack.peekFirst());   //获取栈顶元素
+        System.out.println(stack.pollFirst());   //获取并移除栈顶元素
+        System.out.println(&quot;栈为空:&quot;+stack.isEmpty());   //判断栈是否为空
+        System.out.println(&quot;============================================&quot;);
+    }
+</code></pre><blockquote>
+<p>栈为空:true
+栈为空:false
+12
+12</p>
+<p>栈为空:true</p>
+<p>队列为空:true
+队列为空:false
+12
+12
+队列为空:true</p>
+</blockquote>
+<blockquote>
+<p>小提示</p>
+<p>在Deque中，获取并移除元素的方法有两个，分别是removeXxx以及peekXxx。</p>
+<p>存在元素时，两者的处理都是一样的。但是当Deque内为空时，removeXxx会直接抛出NoSuchElementException，而peekXxx则会返回null。</p>
+<p>所以无论在实际开发或者算法时，推荐使用peekXxx方法</p>
+</blockquote>
+<p>其实ArrayDeque和LinkedList都可以作为栈以及队列使用，但是从执行效率来说，ArrayDeque作为队列以及LinkedList作为栈使用会是更好的选择。</p>
+<p>另外，我在leetcode看到有人采用Vector下的Stack，这个同步加锁粒度过大(对象级)，另外我觉得算法中没有线程同步的需要吧。</p>
+<ul>
+<li>小结</li>
+</ul>
+<p>PriorityQueue可以作为堆使用，而且可以根据传入的Comparator实现大小的调整，会是一个很好的选择。</p>
+<p>ArrayDeque通常作为栈或队列使用，但是栈的效率不如LinkedList高。</p>
+<p>LinkedList通常作为栈或队列使用，但是队列的效率不如ArrayQueue高。</p>
+<h3 id="heading-4">总结</h3>
+<p>在java中，Queue被定义成单端队列使用，Deque被定义成双端队列使用。</p>
+<p>而由于双端队列的定义，Deque可以作为栈或者队列使用，而Queue只能作为队列或者依赖于子类的实现作为堆使用。</p>
+<p><strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong>转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/java/queue%E4%B8%8Edeque%E7%9A%84%E5%8C%BA%E5%88%AB/">https://cartoonyu.github.io/cartoon-blog/post/java/queue%E4%B8%8Edeque%E7%9A%84%E5%8C%BA%E5%88%AB/</a></strong></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/java/%E6%97%A0%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%9C%89%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>&gt;&gt;与&gt;&gt;&gt;的区别</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/java/java%E7%9A%84list%E6%8E%A5%E5%8F%A3%E7%9A%84remove%E9%87%8D%E8%BD%BD%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%8E%9F%E7%90%86/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>JAVA的List接口的remove重载方法调用原理</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

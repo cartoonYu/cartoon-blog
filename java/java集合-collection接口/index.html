@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="本篇文章为JAVA集合系列的第一篇，主要叙述Collection接口的子接口以及成员方法的使用方法">
+  
+  <meta property="og:title" content="JAVA集合--Collection接口" />
+<meta property="og:description" content="本篇文章为JAVA集合系列的第一篇，主要叙述Collection接口的子接口以及成员方法的使用方法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-collection%E6%8E%A5%E5%8F%A3/" />
+<meta property="article:published_time" content="2019-05-08T20:43:38+08:00" />
+<meta property="article:modified_time" content="2019-05-08T20:43:38+08:00" />
+
+
+  <title>
+  
+       JAVA集合--Collection接口 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-collection%E6%8E%A5%E5%8F%A3/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JAVA集合--Collection接口</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>May 8, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>6 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p>    <strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong><!-- raw HTML omitted -->    转载请注明出处:https://cartoonyu.github.io/cartoon-blog</strong></p>
+<p>    在概述里面也说过：Collection是java集合两大接口之一，旗下有三大子接口：Set（元素不能重复，且无序）、Queue、List（元素可重复，且有序）。</p>
+<p>    Collection来源于java.util包，主要方法包括：</p>
+<p>Iterator的方法包括：</p>
+<table>
+<thead>
+<tr>
+<th align="left">成员方法</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">boolean hasNext();</td>
+<td align="left">将传入的Object对象添加到容器中，添加后方法返回true</td>
+</tr>
+<tr>
+<td align="left">boolean addAll(Collection c)</td>
+<td align="left">将传入的集合c中的所有对象添加到容器中，添加后方法返回true</td>
+</tr>
+<tr>
+<td align="left">void clear()</td>
+<td align="left">清空集合，集合长度变为0</td>
+</tr>
+<tr>
+<td align="left">boolean contains(Object o)</td>
+<td align="left">检查集合是否存在对象o，若存在返回true</td>
+</tr>
+<tr>
+<td align="left">boolean containsAll(Collection c)</td>
+<td align="left">检查集合是否存在集合c的所有对象，若存在返回true</td>
+</tr>
+<tr>
+<td align="left">boolean isEmpty()</td>
+<td align="left">返回集合的size是否为0</td>
+</tr>
+<tr>
+<td align="left">Iterator iterator()</td>
+<td align="left">返回Iterator对象</td>
+</tr>
+<tr>
+<td align="left">boolean remove(Object o)</td>
+<td align="left">删除集合中第一个符合条件的元素，若集合存在对象o，删除并返回true</td>
+</tr>
+<tr>
+<td align="left">boolean removeAll(Collection c)</td>
+<td align="left">删除集合中所有与集合c重合的元素，若删除后对象进行了改变返回true</td>
+</tr>
+<tr>
+<td align="left">boolean retainAll(Collection c)</td>
+<td align="left">删除集合中所有与集合c不重合的元素，若删除后对象进行了改变返回true</td>
+</tr>
+<tr>
+<td align="left">int size()</td>
+<td align="left">返回集合元素的个数</td>
+</tr>
+<tr>
+<td align="left">Object[] toArray()</td>
+<td align="left">把集合转变成数组，集合的元素变成对应的数组元素</td>
+</tr>
+</tbody>
+</table>
+<p>    下面是Collection的实例化以及各成员方法的使用方法</p>
+<ul>
+<li>实例化</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collection c1<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>   
+Collection c2<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>    
+Collection c3<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> LinkedHashSet<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+Collection c4<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> ArrayDeque<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>    
+Collection c5<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>     
+Collection c6<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>   
+</code></pre></div><ul>
+<li>boolean isEmpty();</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">boolean</span> isEmpty<span style="color:#f92672">=</span>c5<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">print</span><span style="color:#f92672">(</span>isEmpty<span style="color:#f92672">?</span><span style="color:#e6db74">&#34;c5为空&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;c5不为空&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">输出<span style="color:#960050;background-color:#1e0010">：</span> c5为空
+</code></pre></div><p>    因为c5在此之前并没有添加任何元素，所以为空。</p>
+<ul>
+<li>Iterator iterator();</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Iterator it5<span style="color:#f92672">=</span>c5<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>it5<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;集合5元素：&#34;</span><span style="color:#f92672">+</span>it5<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> 输出<span style="color:#960050;background-color:#1e0010">：</span>集合5元素<span style="color:#960050;background-color:#1e0010">：</span>5
+</code></pre></div><p>    注：每个Iterator对象只能使用一次， 复用会导致java.util.ConcurrentModificationException。</p>
+<p>    在本代码中，新建了一个局部变量it5保存c5的迭代器，再通过迭代器的成员方法hasNext判断是否存在下一元素，若true，输出此元素。</p>
+<p>    java8为Collection的遍历新增了一个来源于Collection的父接口iterable的方法：forEach(Consumer action)。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">c5<span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;集合元素为&#34;</span><span style="color:#f92672">+</span>obj<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">输出<span style="color:#960050;background-color:#1e0010">：</span>集合元素为5
+</code></pre></div><ul>
+<li>boolean add(Object o);</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">c5<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>5<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+Iterator it<span style="color:#f92672">=</span>c5<span style="color:#f92672">.</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>it<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;集合元素：&#34;</span><span style="color:#f92672">+</span>it<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><pre><code>输出：集合元素：5
+</code></pre><p>    在本代码中，c5被添加了一个元素5，所以经过迭代器输出只能得到5。</p>
+<ul>
+<li>boolean addAll(Collection c);</li>
+</ul>
+<pre><code>c6.addAll(c5);
+Iterator it6=c6.iterator();
+while(it6.hasNext()) {
+	System.out.println(&quot;集合6元素：&quot;+it6.next());
+}
+</code></pre><pre><code>输出：集合6元素：5
+</code></pre><p>    在本代码中，c5中的所有元素(5)被整体添加到c6中，所以c6迭代输出5。</p>
+<ul>
+<li>void clear();</li>
+</ul>
+<pre><code>c6.clear();
+Iterator it6=c6.iterator();
+while(it6.hasNext()) {
+	System.out.println(&quot;集合6元素：&quot;+it6.next());
+}
+</code></pre><pre><code>无输出
+</code></pre><p>    在本代码中，c6被清空，所以迭代输出并没有结果。</p>
+<ul>
+<li>boolean contains(Object o);</li>
+</ul>
+<pre><code>boolean isContainsFive=c5.contains(5);
+boolean isContainsSix=c5.contains(6);
+System.out.println(&quot;c5是否存在元素5:&quot;+isContainsFive);
+System.out.println(&quot;c5是否存在元素6:&quot;+isContainsSix);
+</code></pre><pre><code>输出：c5是否存在元素5:true
+      c5是否存在元素6:false
+</code></pre><p>    在本代码中，isContainsFive的值取决于c5是否含有元素5(isContainsSix亦是如此)。而c5只有一个元素5，所以isContainsFive的值为true，isContainsSix的值为false。</p>
+<ul>
+<li>boolean containsAll(Collection c);</li>
+</ul>
+<pre><code>c4.addAll(c5);
+System.out.println(&quot;c5是否包括c6的全部元素:&quot;+c5.containsAll(c4));
+c4.add(3);
+System.out.println(&quot;c5是否包括c6的全部元素:&quot;+c5.containsAll(c4));
+</code></pre><pre><code>输出：c5是否包括c6的全部元素:true
+      c5是否包括c6的全部元素:false
+</code></pre><p>    在本代码中，首先将c5的所有元素（5）添加到c4中，所以第一个输出语句必定为true。但是在第一个语句后c4添加了一个新的元素3，所以第二个输出语句为false。</p>
+<ul>
+<li>boolean remove(Object o);</li>
+</ul>
+<pre><code>c5.add(6);
+Iterator it5=c5.iterator();
+while(it5.hasNext()) {
+	System.out.println(&quot;集合元素：&quot;+it5.next());
+}
+c5.remove(6);
+Iterator aIt5=c5.iterator();
+while(aIt5.hasNext()) {
+	System.out.println(&quot;集合5元素：&quot;+aIt5.next());
+}
+</code></pre><pre><code>输出：集合5元素：5
+      集合5元素：6
+      集合5元素：5
+</code></pre><p>    在本代码中，c5首先添加了一个新元素6，迭代输出得到5、6。然后调用c5的成员方法remove，迭代输出得到5。</p>
+<ul>
+<li>boolean removeAll(Collection c);</li>
+</ul>
+<pre><code>c5.removeAll(c4);
+Iterator aIt5=c5.iterator();
+while(aIt5.hasNext()) {
+	System.out.println(&quot;集合5元素：&quot;+aIt5.next());
+}
+</code></pre><pre><code>无输出
+</code></pre><p>    在本代码中，c5移除掉c4中的所有元素（3、5），可以理解为移除掉两个集合的交集，所以迭代输出没有结果。</p>
+<ul>
+<li>boolean retainAll(Collection c);</li>
+</ul>
+<pre><code>c5.add(5);
+c4.retainAll(c5);
+Iterator it4=c4.iterator();
+while(it4.hasNext()) {
+	System.out.println(&quot;集合4元素：&quot;+it4.next());
+}
+</code></pre><pre><code>输出：集合4元素：5
+</code></pre><p>    注：因为在方法9中集合5已经变成空集合，所以在此方法中将5添加到集合5中以做演示。
+    在本方法中，c5添加了一个元素5，然后调用c4的成员方法retainAll删除掉不属于c5的所有元素，迭代输出5。</p>
+<ul>
+<li>int size();</li>
+</ul>
+<pre><code>int size=c4.size();
+System.out.println(&quot;集合4的元素个数为：&quot;+size);
+</code></pre><pre><code>输出：集合4的元素个数为：1
+</code></pre><p>    在本代码中，新建一个局部变量size保存c4的成员方法size返回的值，输出得到1（因为c4只有一个元素5）。</p>
+<ul>
+<li>Object[] toArray();</li>
+</ul>
+<pre><code>System.out.println(c4.toArray());
+</code></pre><pre><code>输出：[Ljava.lang.Object;@71e7a66b
+</code></pre><p>    作为对比，我尝试调用父类Object的String toString()方法，结果得到了[5]，与直接输出对象的结果是一致的。</p>
+<p>    <strong>注：若遍历集合的同时改变集合，将引发ConcurrentModificationException异常。</strong></p>
+<p>    Collection接口就写到这里了，看起来简单，但是某些成员方法需要查看源码才知道如何去用，基本上写完这篇博文，我对Collection已经有了比较深入的了解，忽然觉得写作跟编程是相辅相成的。</p>
+<p>    一点题外话：这是我第一次系统地写博文，懂得了一个道理：世界上没有简单的事。写的不好请多多见谅。之后要狠狠提高一下我的写作水平，之前写公众号的文笔都不知道丢在哪里了。
+    如果你还想了解关于java集合的内容，欢迎点击<a href="%5Bhttps://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/%5D(https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/)">JAVA集合概述</a></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>JAVA集合概述</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-iterator%E6%8E%A5%E5%8F%A3/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>JAVA集合--Iterator接口</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

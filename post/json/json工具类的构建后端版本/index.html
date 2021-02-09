@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="强迫症的我关于前后端交互的一点心得">
+  
+  <meta property="og:title" content="JSON工具类的构建(后端版本)" />
+<meta property="og:description" content="强迫症的我关于前后端交互的一点心得" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/" />
+<meta property="article:published_time" content="2019-10-05T14:14:20+08:00" />
+<meta property="article:modified_time" content="2019-10-05T14:14:20+08:00" />
+
+
+  <title>
+  
+       JSON工具类的构建(后端版本) | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/json"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JSON </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JSON工具类的构建(后端版本)</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Oct 5, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>4 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <h3 id="heading">前言</h3>
+<p>在前后端交互的选择上，之前一直采用的是模板引擎(因为我只负责后端)。
+而这次的一个算是作业吧，前后端都是我，所以就研究了一下JSON交互在java web的应用(主要是前端)。</p>
+<h3 id="heading-1">优缺点</h3>
+<ul>
+<li>
+<p>前后端耦合</p>
+<ul>
+<li>模板引擎加载只是将jsp的交互方式移植到html上，前端文件格式改变了，但是jsp中前后端耦合的缺点没有改变。</li>
+<li>json交互中，数据通过js/jquery动态加载在页面上，数据与页面进行分离，页面只是单纯用于展示。</li>
+</ul>
+</li>
+<li>
+<p>数据加载逻辑复用</p>
+<ul>
+<li>模板引擎的方式中，如果有很多相似的页面元素以及一样的数据返回格式，那只是复制粘贴大法了。</li>
+<li>在模板引擎的例子中，只需要定义一套数据加载模型，传入不同的页面元素id以及数据则能实现逻辑复用</li>
+</ul>
+</li>
+<li>
+<p>后端接口的复用
+因为我的学习路线的问题，所以我开发过安卓原生一段时间。</p>
+<ul>
+<li>模板引擎式的加载必须使用webView组件加载，且需另进行原生构建时接口也要另外构建。</li>
+<li>json交互，谷歌爸爸鼓励使用json进行交互(一年多前的事，现在不清楚了)，且安卓原生内置GJSON进行json解析与构建，所以可以在原生以及跨平台的构建有很好的平衡。</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-2">对比</h3>
+<p>既然选择了json交互的方式，而java官方据我所知是没有内置对json的支持，Spring在Controller的层面使用RestContrller注解实现对json的支持。
+但是我个人强迫症很强，我对Contrller(或者说是Presenter)的定义是</p>
+<ul>
+<li>对用户访问的url作页面的映射</li>
+<li>对用户触发的事件进行数据的传递与返回
+正是这两点的定义，我需要在Service层组合统一格式的结果返回到上层，所以需要第三方json支持。
+可选择的JSON库有很多，GSON，FastJson，Jackson，根据<a href="https://mp.weixin.qq.com/s/YdMgNUpxXi-4hSWSql5IgA">对比</a>，我选择为马老师充值一波。</li>
+</ul>
+<h3 id="heading-3">需求拆分</h3>
+<p>我初步定义的需求主要有三个</p>
+<ul>
+<li>Service传递统一处理结果到上层</li>
+<li>无论是单一数据实体或者List型数据处理的结果是一样的</li>
+<li>处理过程是独立的，不依赖于实体类的支持</li>
+</ul>
+<h3 id="heading-4">格式设计</h3>
+<p>在网上看过很多后端返回数据的格式，很多都是返回一个处理的status以及具体的数据，而这个status是根据http状态码进行设定的，因为这次时间比较紧，所以我就采用了这个方案。</p>
+<pre><code>{
+    &quot;status&quot;: &quot;status&quot;,
+    &quot;object&quot;: {
+        
+    }
+}
+</code></pre><h3 id="heading-5">代码设计</h3>
+<p>因为我希望Controller能直接拿到结果，所以构建结果的过程全放在Result类中。
+而结果构建我主要分为两种：只有状态码(通知处理结果)以及具有返回结果(数据显示)，而根据结果的个人也分为两种：单个数据以及List型数据。</p>
+<h3 id="heading-6">实际代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Getter</span>
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResultSet</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> JSONObject result<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ResultSet</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        result<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> JSONObject<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 初始化状态码
+</span><span style="color:#75715e">     * @param status
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initStatus</span><span style="color:#f92672">(</span>String status<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        result<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;status&#34;</span><span style="color:#f92672">,</span> status<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 初始化状态码以及返回数据
+</span><span style="color:#75715e">     * @param status
+</span><span style="color:#75715e">     * @param obj
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initData</span><span style="color:#f92672">(</span>String status<span style="color:#f92672">,</span>Object obj<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        initStatus<span style="color:#f92672">(</span>status<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>obj <span style="color:#66d9ef">instanceof</span> List<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            List list<span style="color:#f92672">=</span><span style="color:#f92672">(</span>List<span style="color:#f92672">)</span>obj<span style="color:#f92672">;</span>
+            JSONArray array<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> JSONArray<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>Object object<span style="color:#f92672">:</span>list<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+                array<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>putObjectToJSON<span style="color:#f92672">(</span>object<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            result<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;object&#34;</span><span style="color:#f92672">,</span>array<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            result<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;object&#34;</span><span style="color:#f92672">,</span>putObjectToJSON<span style="color:#f92672">(</span>obj<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 将单个Object放入json文件中
+</span><span style="color:#75715e">     * @param obj
+</span><span style="color:#75715e">     * @return
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> JSONObject <span style="color:#a6e22e">putObjectToJSON</span><span style="color:#f92672">(</span>Object obj<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+        JSONObject result<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> JSONObject<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        Field<span style="color:#f92672">[</span><span style="color:#f92672">]</span> fields<span style="color:#f92672">=</span>obj<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredFields</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>Field field<span style="color:#f92672">:</span>fields<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+            field<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            String fieldName<span style="color:#f92672">=</span>field<span style="color:#f92672">.</span><span style="color:#a6e22e">getType</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getSimpleName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fieldName<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Department&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">|</span><span style="color:#f92672">|</span>fieldName<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Job&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+                JSONObject tempJson<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> JSONObject<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    Object tempObject <span style="color:#f92672">=</span> field<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                    Field<span style="color:#f92672">[</span><span style="color:#f92672">]</span> tempFields<span style="color:#f92672">=</span>tempObject<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDeclaredFields</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>Field tempField<span style="color:#f92672">:</span>tempFields<span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+                        tempField<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                        tempJson<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>tempField<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>tempField<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>tempObject<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                        tempField<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalAccessException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fieldName<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Department&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">{</span>
+                    result<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;depart&#34;</span><span style="color:#f92672">,</span>tempJson<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                    result<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;job&#34;</span><span style="color:#f92672">,</span>tempJson<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                    result<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>field<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>field<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>obj<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IllegalAccessException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            field<span style="color:#f92672">.</span><span style="color:#a6e22e">setAccessible</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="heading-7">代码思路</h3>
+<ol>
+<li>
+<p>Service通过initStatus/initData传入数据/状态码进行对象的生成</p>
+</li>
+<li>
+<p>Controller通过result的getter方法获取处理结果</p>
+</li>
+<li>
+<p>单个数据以及List数据的处理</p>
+<ol>
+<li>单个对象直接通过putObjectToJSON进行处理</li>
+<li>List数据通过对象类型判断，向下转型，遍历元素形成JSONArray进行处理，对元素处理的方法也是采用putObjectToJSON</li>
+</ol>
+</li>
+<li>
+<p>嵌套对象的处理</p>
+<pre><code>public class Employee {
+   
+   private int id;
+   
+   private Department depart;
+   
+   private Job job;
+   
+   private String name;
+   
+    ..................
+}
+</code></pre><p>``</p>
+<ol>
+<li>通过反射获取对象的所有成员变量类型以及对应的值</li>
+<li>遇到上述bean类含有嵌套自定义对象时，递归生成json文件加入到结果json中</li>
+</ol>
+</li>
+</ol>
+<h3 id="heading-8">结果演示</h3>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/174825768453.png" alt=""></p>
+<p>​						 （左为单object型，右为List型）</p>
+<h3 id="heading-9">不足之处</h3>
+<ol>
+<li>状态码的设置应该采用枚举类的赋值，能更好的约束返回的状态码</li>
+<li>在对象转换方面，应该采用配置扫描的方式。在配置文件中写入bean的包所在，在嵌套对象转换时通过扫描配置文件的信息判断</li>
+<li>在嵌套对象的转换方面，只是做了一层的嵌套转换，更多层的没有考虑到，之后会再重构的</li>
+<li>对异常处理方面，只是简单的输出错误信息。应该对错误信息进行进一步的处理</li>
+</ol>
+<h3 id="heading-10">后记</h3>
+<p>因为这次时间比较赶，从项目的立项到成品的建立花了5天时间，所以注意到很多细节，但是没有去处理。
+有想过之后有时间的话将这个工具类的细节完善起来，形成jar包供自己或者供开源。</p>
+<h3 id="heading-11">相关连接</h3>
+<p>这只是后台对结果的统一处理，我另外写了一篇文章：<a href="%5Bhttps://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/%5D(https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/)">JSON工具类的构建(前端版本)</a>，配合使用效果更佳哦~</p>
+<p><strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong>转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%90%8E%E7%AB%AF%E7%89%88%E6%9C%AC/">https://cartoonyu.github.io/cartoon-blog/post/json/json工具类的构建后端版本/</a></strong></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/json" role="button">JSON </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/post/java/queue%E4%B8%8Edeque%E7%9A%84%E5%8C%BA%E5%88%AB/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Queue与Deque的区别</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/post/json/json%E5%B7%A5%E5%85%B7%E7%B1%BB%E7%9A%84%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%89%88%E6%9C%AC/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>JSON工具类的构建(前端版本)</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

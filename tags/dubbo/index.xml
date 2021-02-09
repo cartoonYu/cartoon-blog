@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dubbo on cartoon&#39;s blog</title>
+    <link>https://cartoonyu.github.io/cartoon-blog/tags/dubbo/</link>
+    <description>Recent content in dubbo on cartoon&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights reserved - 2021</copyright>
+    <lastBuildDate>Sat, 09 Nov 2019 11:14:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://cartoonyu.github.io/cartoon-blog/tags/dubbo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dubbo与SpringBoot的结合</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/dubbo/dubbo%E4%B8%8Espringboot%E7%9A%84%E7%BB%93%E5%90%88/</link>
+      <pubDate>Sat, 09 Nov 2019 11:14:02 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/dubbo/dubbo%E4%B8%8Espringboot%E7%9A%84%E7%BB%93%E5%90%88/</guid>
+      <description>Dubbo与SpringBoot的结合（纯配置）</description>
+    </item>
+    
+    <item>
+      <title>Dubbo与SpringBoot的结合</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/post/dubbo/dubbo%E4%B8%8Espringboot%E7%9A%84%E7%BB%93%E5%90%88/</link>
+      <pubDate>Sat, 09 Nov 2019 11:14:02 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/post/dubbo/dubbo%E4%B8%8Espringboot%E7%9A%84%E7%BB%93%E5%90%88/</guid>
+      <description>Dubbo与SpringBoot的结合（纯配置）</description>
+    </item>
+    
+  </channel>
+</rss>

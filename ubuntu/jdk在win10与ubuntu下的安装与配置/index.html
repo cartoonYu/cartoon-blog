@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="JDK在Win10与Ubuntu下的安装与配置">
+  
+  <meta property="og:title" content="JDK在Win10与Ubuntu下的安装与配置" />
+<meta property="og:description" content="JDK在Win10与Ubuntu下的安装与配置" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/ubuntu/jdk%E5%9C%A8win10%E4%B8%8Eubuntu%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" />
+<meta property="article:published_time" content="2019-05-08T21:28:14+08:00" />
+<meta property="article:modified_time" content="2019-05-08T21:28:14+08:00" />
+
+
+  <title>
+  
+       JDK在Win10与Ubuntu下的安装与配置 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/ubuntu/jdk%E5%9C%A8win10%E4%B8%8Eubuntu%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog\/';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog/">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/post/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/ubuntu"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> Ubuntu </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JDK在Win10与Ubuntu下的安装与配置</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>May 8, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>2 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <p>    <strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong><!-- raw HTML omitted -->    转载请注明出处:https://cartoonyu.github.io/cartoon-blog</strong></p>
+<p>    近段时间把自己电脑（win）、虚拟机（Ubuntu）以及阿里云（ubuntu）都重置了一遍，三个地方都有用到JDK,不想之后找教程找的那么麻烦。所以就自己总结一遍，一次性把轮子造好。</p>
+<ul>
+<li>环境</li>
+</ul>
+<pre><code>Win10 1803 Home
+Ubuntu 16.04.3
+Ubuntu 18.04.1
+</code></pre><p>    其中服务器与虚拟机配置方法一致，只是目录不同，就归成Ubuntu一类好了。</p>
+<ul>
+<li>Windows环境下安装</li>
+</ul>
+<ol>
+<li>下载JDK的安装程序</li>
+</ol>
+<pre><code>https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html
+</code></pre><ol start="2">
+<li>
+<p>按照步骤安装</p>
+</li>
+<li>
+<p>配置环境变量</p>
+</li>
+</ol>
+<p>    此电脑&ndash;属性&ndash;编辑系统设置&ndash;环境变量</p>
+<ul>
+<li>新建系统变量JAVA_HOME，并在变量值选择Java的安装目录</li>
+</ul>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/580724644-5cceb9e535ee8_articlex.png" alt=""></p>
+<ul>
+<li>新建变量CLASSPATH，写入图中的变量值</li>
+</ul>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/465870922-5cceb9e53a78b_articlex.png" alt=""></p>
+<ul>
+<li>选择变量Path&ndash;编辑文本&ndash;在最后追加图中的值</li>
+</ul>
+<p><img src="E:%5CcartoonYu.github.io%5Ccontent%5Cpost%5CUbuntu%5C2650024197-5cceb9e5525d5_articlex.png" alt=""></p>
+<ul>
+<li>验证安装是否成功</li>
+</ul>
+<p>    cmd下输入java -version</p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/1976718223-5cceb9e550ac1_articlex.png" alt=""></p>
+<p>    出现图中的输出语句即为成功</p>
+<ul>
+<li>Ubuntu环境下安装</li>
+</ul>
+<ol>
+<li>
+<p>下载JDK的压缩包</p>
+<pre><code>https://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html
+</code></pre><p>``
+    勾选同意协议后选择.tar.gz结尾的选项</p>
+</li>
+<li>
+<p>解压到指定文件夹</p>
+<pre><code>tar -zxvf packageName.tar.gz  //packageName为jdk压缩包包名
+</code></pre><p>``
+    在服务器中我是直接通过xftp的GUI进行移动，虚拟机中受限于权限，我在终端上用root打开文件管理器移动的。</p>
+</li>
+<li>
+<p>配置环境变量</p>
+<ul>
+<li>
+<p>打开etc目录下的profile或者bashrc</p>
+<pre><code>   vim /etc/profile
+   vim ~/.bashrc
+</code></pre><pre><code>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;vim的安装以及基本命令可以[戳此查看]([https://www.jianshu.com/p/2a3d05ab27f2](https://www.jianshu.com/p/2a3d05ab27f2)
+)
+
+     
+
+</code></pre></li>
+<li>
+<p>在末尾追加以下信息并保存</p>
+<pre><code>   export JAVA_HOME=/root/usr/jdk
+   export JRE_HOME=/root/usr/jre
+   export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+   export PATH=${JAVA_HOME}/bin:$PATH
+</code></pre><pre><code>
+     
+
+</code></pre></li>
+<li>
+<p>刷新配置文件</p>
+<pre><code>    source /etc/profile
+    source ~/.bashrc
+</code></pre><pre><code>
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>验证安装是否成功</p>
+<p>    终端下输入java -version</p>
+<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/3429348406-5cceb9e5651d4_articlex.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/ubuntu" role="button">Ubuntu </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/ubuntu/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85vim%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Ubuntu下安装vim以及常用命令</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>
