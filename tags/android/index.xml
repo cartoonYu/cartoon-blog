@@ -22,29 +22,11 @@
     </item>
     
     <item>
-      <title>Android利用Handler异步获取子线程中的产生的值</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/android/android%E5%88%A9%E7%94%A8handler%E5%BC%82%E6%AD%A5%E8%8E%B7%E5%8F%96%E5%AD%90%E7%BA%BF%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BA%A7%E7%94%9F%E7%9A%84%E5%80%BC/</link>
-      <pubDate>Wed, 08 May 2019 20:17:37 +0800</pubDate>
-      
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/android/android%E5%88%A9%E7%94%A8handler%E5%BC%82%E6%AD%A5%E8%8E%B7%E5%8F%96%E5%AD%90%E7%BA%BF%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%BA%A7%E7%94%9F%E7%9A%84%E5%80%BC/</guid>
-      <description>安卓中线程交互问题解决</description>
-    </item>
-    
-    <item>
       <title>如何简单地利用Bitmap为中介储存图片到数据库中</title>
       <link>https://cartoonyu.github.io/cartoon-blog/android/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E5%9C%B0%E5%88%A9%E7%94%A8bitmap%E4%B8%BA%E4%B8%AD%E4%BB%8B%E5%82%A8%E5%AD%98%E5%9B%BE%E7%89%87%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD/</link>
       <pubDate>Tue, 07 May 2019 21:16:22 +0800</pubDate>
       
       <guid>https://cartoonyu.github.io/cartoon-blog/android/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E5%9C%B0%E5%88%A9%E7%94%A8bitmap%E4%B8%BA%E4%B8%AD%E4%BB%8B%E5%82%A8%E5%AD%98%E5%9B%BE%E7%89%87%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD/</guid>
-      <description>简单的安卓本地图片存储方法</description>
-    </item>
-    
-    <item>
-      <title>如何简单地利用Bitmap为中介储存图片到数据库中</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/android/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E5%9C%B0%E5%88%A9%E7%94%A8bitmap%E4%B8%BA%E4%B8%AD%E4%BB%8B%E5%82%A8%E5%AD%98%E5%9B%BE%E7%89%87%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD/</link>
-      <pubDate>Tue, 07 May 2019 21:16:22 +0800</pubDate>
-      
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/android/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E5%9C%B0%E5%88%A9%E7%94%A8bitmap%E4%B8%BA%E4%B8%AD%E4%BB%8B%E5%82%A8%E5%AD%98%E5%9B%BE%E7%89%87%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD/</guid>
       <description>简单的安卓本地图片存储方法</description>
     </item>
     

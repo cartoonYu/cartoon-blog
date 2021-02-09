@@ -21,14 +21,5 @@
       <description>近段时间学习极客时间李玥老师的后端存储实战课时，看到一个很多意思的东西：用kafka存储点击流的数据，并重复处理。在以往的使用中，kafka</description>
     </item>
     
-    <item>
-      <title>kafka数据如何被重复消费</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/post/message-queue/kafka%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9/</link>
-      <pubDate>Sun, 13 Sep 2020 22:31:34 +0800</pubDate>
-      
-      <guid>https://cartoonyu.github.io/cartoon-blog/post/message-queue/kafka%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9/</guid>
-      <description>近段时间学习极客时间李玥老师的后端存储实战课时，看到一个很多意思的东西：用kafka存储点击流的数据，并重复处理。在以往的使用中，kafka</description>
-    </item>
-    
   </channel>
 </rss>
