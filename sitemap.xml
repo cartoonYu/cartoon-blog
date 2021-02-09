@@ -28,12 +28,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/spring-cloud/</loc>
     <lastmod>2020-10-28T22:56:50+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/spring-cloud/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud/</loc>
     <lastmod>2020-10-28T22:56:50+08:00</lastmod>
   </url>
   
@@ -148,22 +148,22 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2019-10-17T19:11:31+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cartoonyu.github.io/cartoon-blog/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2019-10-17T19:11:31+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/docker/</loc>
-    <lastmod>2019-10-10T20:18:23+08:00</lastmod>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2019-10-17T19:11:31+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://cartoonyu.github.io/cartoon-blog/tags/docker/</loc>
+    <lastmod>2019-10-10T20:18:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/docker/</loc>
     <lastmod>2019-10-10T20:18:23+08:00</lastmod>
   </url>
   
@@ -183,12 +183,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/java/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/java/</loc>
     <lastmod>2019-10-09T22:37:49+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/java/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/java/</loc>
     <lastmod>2019-10-09T22:37:49+08:00</lastmod>
   </url>
   
@@ -273,12 +273,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/interview-question/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/interview-question/</loc>
     <lastmod>2019-06-21T18:53:47+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/interview-question/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/interview-question/</loc>
     <lastmod>2019-06-21T18:53:47+08:00</lastmod>
   </url>
   
@@ -358,12 +358,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/git/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/git/</loc>
     <lastmod>2019-05-08T22:00:12+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/git/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/git/</loc>
     <lastmod>2019-05-08T22:00:12+08:00</lastmod>
   </url>
   
@@ -408,12 +408,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/algorithms/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/algorithms/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/algorithms/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/algorithms/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
@@ -428,12 +428,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/ubuntu/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/ubuntu/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/ubuntu/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/ubuntu/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
@@ -468,12 +468,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/mysql/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/mysql/</loc>
     <lastmod>2019-05-08T21:20:38+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/mysql/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/mysql/</loc>
     <lastmod>2019-05-08T21:20:38+08:00</lastmod>
   </url>
   
@@ -503,12 +503,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/eclipse/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/eclipse/</loc>
     <lastmod>2019-05-08T20:56:42+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/eclipse/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/eclipse/</loc>
     <lastmod>2019-05-08T20:56:42+08:00</lastmod>
   </url>
   
@@ -563,12 +563,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/android/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/android/</loc>
     <lastmod>2019-05-08T20:17:37+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/android/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/android/</loc>
     <lastmod>2019-05-08T20:17:37+08:00</lastmod>
   </url>
   
