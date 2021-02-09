@@ -22,12 +22,39 @@
     </item>
     
     <item>
+      <title>JDK在Win10与Ubuntu下的安装与配置</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/ubuntu/jdk%E5%9C%A8win10%E4%B8%8Eubuntu%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Wed, 08 May 2019 21:28:14 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/ubuntu/jdk%E5%9C%A8win10%E4%B8%8Eubuntu%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <description>JDK在Win10与Ubuntu下的安装与配置</description>
+    </item>
+    
+    <item>
       <title>Ubuntu下安装vim以及常用命令</title>
       <link>https://cartoonyu.github.io/cartoon-blog/post/ubuntu/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85vim%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 08 May 2019 21:25:27 +0800</pubDate>
       
       <guid>https://cartoonyu.github.io/cartoon-blog/post/ubuntu/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85vim%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>vim在Ubuntu的安装以及简单的使用方法</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu下安装vim以及常用命令</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/ubuntu/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85vim%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 08 May 2019 21:25:27 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/ubuntu/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85vim%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>vim在Ubuntu的安装以及简单的使用方法</description>
+    </item>
+    
+    <item>
+      <title>MySQL在Win10与Ubuntu下的安装与配置</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/mysql/mysql%E5%9C%A8win10%E4%B8%8Eubuntu%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Wed, 08 May 2019 21:20:38 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/mysql/mysql%E5%9C%A8win10%E4%B8%8Eubuntu%E4%B8%8B%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <description>简单记录MySQL在Win10以及Ubuntu上的配置</description>
     </item>
     
     <item>
@@ -45,6 +72,15 @@
       <pubDate>Wed, 08 May 2019 20:59:13 +0800</pubDate>
       
       <guid>https://cartoonyu.github.io/cartoon-blog/post/ubuntu/ubuntu%E7%BB%88%E7%AB%AF%E5%86%85%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
+      <description>Ubuntu终端内打开文件管理器</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu终端内打开文件管理器</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/ubuntu/ubuntu%E7%BB%88%E7%AB%AF%E5%86%85%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+      <pubDate>Wed, 08 May 2019 20:59:13 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/ubuntu/ubuntu%E7%BB%88%E7%AB%AF%E5%86%85%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
       <description>Ubuntu终端内打开文件管理器</description>
     </item>
     

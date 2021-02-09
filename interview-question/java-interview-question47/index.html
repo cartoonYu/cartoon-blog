@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="JAVA面试题系列">
+  
+  <meta property="og:title" content="JAVA面试题(47)" />
+<meta property="og:description" content="JAVA面试题系列" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/interview-question/java-interview-question47/" />
+<meta property="article:published_time" content="2019-07-27T22:52:29+08:00" />
+<meta property="article:modified_time" content="2019-07-27T22:52:29+08:00" />
+
+
+  <title>
+  
+       JAVA面试题(47) | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/interview-question/java-interview-question47/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/interview-question"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> interview question </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">JAVA面试题(47)</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jul 27, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>4 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <h3 id="java">java</h3>
+<ol>
+<li>java对象引用类型以及对象回收的策略
+<ol>
+<li>强引用
+<ol>
+<li>通过显式的new或反射生成对象</li>
+<li>不会被回收</li>
+</ol>
+</li>
+<li>软引用
+<ol>
+<li>在内存不足的时候会回收</li>
+</ol>
+</li>
+<li>弱引用
+<ol>
+<li>无论内存是否足够，GC都会回收</li>
+</ol>
+</li>
+<li>虚引用
+<ol>
+<li>无论什么时候都会被回收</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>java注解的作用
+<ol>
+<li>文档生成</li>
+<li>编译检查</li>
+<li>标识功能</li>
+</ol>
+</li>
+<li>乐观锁与悲观锁的区别
+<ol>
+<li>数据的修改认为上
+<ol>
+<li>乐观锁认为数据不会被修改</li>
+<li>悲观锁认为数据总被修改</li>
+</ol>
+</li>
+<li>锁的种类上
+<ol>
+<li>乐观锁对写操作不加锁</li>
+<li>悲观锁在读写操作都加锁</li>
+</ol>
+</li>
+<li>执行方法上
+<ol>
+<li>乐观锁通过版本号以及CAS算法实现</li>
+<li>悲观锁通过锁的等待与释放实现</li>
+</ol>
+</li>
+<li>执行效率上
+<ol>
+<li>乐观锁比悲观锁的效率高</li>
+</ol>
+</li>
+<li>数据正确性上
+<ol>
+<li>悲观锁比乐观锁的要好</li>
+</ol>
+</li>
+<li>使用场景
+<ol>
+<li>悲观锁用于写操作频繁的场景</li>
+<li>乐观锁用于读操作频繁的场景</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>CAS与synchronized的使用场景
+<ol>
+<li>CAS不断自旋更新选定的值，用于读操作频繁的场景</li>
+<li>synchronized通过锁的竞争以及释放进行互斥资源的访问，用于写操作频繁的场景</li>
+</ol>
+</li>
+</ol>
+<h3 id="heading">数据库</h3>
+<ol>
+<li>数据库select语句的执行流程(客户端到存储引擎)
+<ol>
+<li>客户端通过TCP三次握手与服务端进行连接</li>
+<li>连接器判断账号信息是否有效</li>
+<li>有效，则进入第三步</li>
+<li>无效，连接器返回Access denied的错误</li>
+<li>查询缓存中是否有执行的记录
+<ol>
+<li>不建议使用，可以通过query_cache_type关闭，MySQL 8.0去除了查询缓存的功能</li>
+<li>有执行记录，则返回上次执行结果</li>
+<li>没有执行记录，进入第四步</li>
+</ol>
+</li>
+<li>分析器进行词法分析，语法分析
+<ol>
+<li>词法分析
+<ol>
+<li>判断输入的SQL语句中的关键词的含义</li>
+</ol>
+</li>
+<li>语法分析
+<ol>
+<li>判断SQL是否合法</li>
+<li>若合法，进入第五步</li>
+<li>若不合法，返回 You have an error in your SQL syntax错误到客户端</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>sql语句经过优化器选择最佳执行策略
+<ol>
+<li>多索引情况下的最佳索引的选择</li>
+<li>多表关联时决定表的连接顺序</li>
+</ol>
+</li>
+<li>sql语句交由执行器进行存储引擎的操作并返回结果
+<ol>
+<li>根据from找到需要查询的表，根据where形成有效的结果集合</li>
+<li>(如果有order by，对数据进行排序)select返回结果</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>数据库更新语句的执行流程(客户端到存储引擎)
+<ol>
+<li>客户端通过TCP三次握手与服务端进行连接</li>
+<li>连接器判断账号信息是否有效
+<ol>
+<li>有效，则进入第三步</li>
+<li>无效，连接器返回Access denied的错误</li>
+</ol>
+</li>
+<li>查询缓存中是否有执行的记录
+<ol>
+<li>不建议使用，可以通过query_cache_type关闭，MySQL 8.0去除了查询缓存的功能</li>
+<li>有执行记录，则返回上次执行结果</li>
+<li>没有执行记录，进入第四步</li>
+</ol>
+</li>
+<li>分析器进行词法分析，语法分析
+<ol>
+<li>词法分析
+<ol>
+<li>判断输入的SQL语句中的关键词的含义</li>
+</ol>
+</li>
+<li>语法分析
+<ol>
+<li>判断SQL是否合法</li>
+<li>若合法，进入第五步</li>
+<li>若不合法，返回 You have an error in your SQL syntax错误到客户端</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>sql语句经过优化器选择最佳执行策略</li>
+<li>sql语句交由执行器进行存储引擎的操作并返回结果</li>
+<li>两段式提交
+<ol>
+<li>检查并读入相关数据页到内存</li>
+<li>将更新语句的操作行写入内存
+<ol>
+<li>写入操作记录到readlog中，处于prepare状态</li>
+<li>写入操作记录到binlog中</li>
+<li>事务提交，处于commit状态</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>mysql执行计划的了解
+<ol>
+<li>指定场景
+<ol>
+<li>server层中的分析器中</li>
+</ol>
+</li>
+<li>作用
+<ol>
+<li>得出最佳sql执行情况，加快访问速度以及减少资源的消耗</li>
+</ol>
+</li>
+<li>使用explain+sql语句进行计划的查看</li>
+<li>相关概念
+<ol>
+<li>type(连接的类型)</li>
+<li>possible_keys(可能使用到的索引)</li>
+<li>key(使用到的索引)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Mysql中Text与Blob的区别</li>
+<li>存储数据表现形式</li>
+<li>Text只能存储文本型数据</li>
+<li>Blob存储二进制的大数据</li>
+<li>大小写敏感</li>
+<li>Text大小写不敏感</li>
+<li>Blob大小写敏感</li>
+<li>使用场景</li>
+<li>Text存储大文本</li>
+<li>Blob存储小文件型数据</li>
+</ol>
+<h3 id="heading-1">计网</h3>
+<ol>
+<li>TCP滑动窗口的了解
+<ol>
+<li>滑动窗口是TCP发送进程控制数据发送的速度以及数据传输可靠性的重要保证</li>
+<li>有关概念
+<ol>
+<li>从左到右是自定义指针p1,p2,p3</li>
+<li>p1左的数据都是已发送已收到确认的数据，p1就是发送进程的发送窗口的左边界</li>
+<li>p3右的数据当前时刻不允许发送的数据，p3是发送进程发送窗口的右边界</li>
+<li>p2在p1与p3之间
+<ol>
+<li>p1至p2的数据，是已发送未确认的数据。收到确认后，p1进行右移；若出现丢失或者超时，重传p1与p2之间的数据</li>
+<li>p2至p3是允许发送未发送的数据区间。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>TCP的发送窗口根据服务器端回传的确认报文或者拥塞控制进行扩大或缩小。</li>
+</ol>
+</li>
+<li>对称加密与非对称加密的区别以及常见算法</li>
+<li>区别</li>
+<li>对称加密用同一密钥进行加密与解密</li>
+<li>非对称加密用公钥进行加密，私钥进行解密</li>
+<li>常见算法</li>
+<li>对称加密
+<ol>
+<li>DES
+2. AES</li>
+</ol>
+</li>
+<li>非对称加密
+<ol>
+<li>DSA
+2. RSA</li>
+</ol>
+</li>
+</ol>
+<h3 id="heading-2">操作系统</h3>
+<ol>
+<li>用户态与内核态的区别
+<ol>
+<li>操作范围
+<ol>
+<li>用户态在内存中运行</li>
+<li>内核态可以操作IO，外设等</li>
+</ol>
+</li>
+<li>执行指令
+<ol>
+<li>用户态只能执行非特权指令</li>
+<li>内核态可以执行特权指令</li>
+</ol>
+</li>
+<li>抢夺处理机
+<ol>
+<li>用户态可以抢占处理机</li>
+<li>内核态不可以抢占处理机</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>磁盘调度算法
+<ol>
+<li>先来先服务</li>
+<li>最短距离优先</li>
+<li>扫描算法</li>
+<li>循环扫描算法</li>
+</ol>
+</li>
+</ol>
+<h3 id="heading-3">算法</h3>
+<ol>
+<li><a href="https://leetcode-cn.com/problems/student-attendance-record-i/">学生出勤记录 I</a></li>
+</ol>
+<p><strong>    本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+    <strong>转载请注明出处:https://cartoonyu.github.io/cartoon-blog/post/interview-question/java-interview-question47/</strong></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
+      
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/interview-question" role="button">interview question </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://cartoonyu.github.io/cartoon-blog/interview-question/java-interview-question48-/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>JAVA面试题(48)</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>
