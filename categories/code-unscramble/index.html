@@ -7,23 +7,22 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="cartoon">
-  <meta name="description" content="简述JAVA集合的用法，为后续的JAVA集合做铺垫">
+  <meta name="description" content="[do what I like love who I love]">
   
-  <meta property="og:title" content="JAVA集合概述" />
-<meta property="og:description" content="简述JAVA集合的用法，为后续的JAVA集合做铺垫" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/" />
-<meta property="article:published_time" content="2019-05-08T20:39:51+08:00" />
-<meta property="article:modified_time" content="2019-05-08T20:39:51+08:00" />
+  <meta property="og:title" content="code unscramble" />
+<meta property="og:description" content="[do what I like love who I love]" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/categories/code-unscramble/" />
+<meta property="og:updated_time" content="2019-05-08T21:28:14+08:00" />
 
 
   <title>
   
-       JAVA集合概述 | cartoon&#39;s blog 
+       code unscramble | cartoon&#39;s blog 
   
   </title>
 
-  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0/">
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/categories/code-unscramble/">
 
   
   
@@ -258,129 +257,281 @@
     
 
     
+<main class="post-main-wrapper px-5">
   
-  <main class="post-main-wrapper">
+  <div class="row">
     
-    
-    <div class="row">
-
+    <div class="col-md-3">
+      
+      
       
 
-      
-      <div class="container pr-5">
-      
-
-        
-        <div class="z-depth-1  post-wrapper white-bg single-post">
-
-          <div class="post-header text-center" >
-  <ul class="post-meta li-x">
-    
-      
-        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/java"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> JAVA </a></li>
-      
-    
-    
-  </ul>
-
-  <div class="px-4 post-heading">JAVA集合概述</div>
-
-  <ul class="post-meta li-x mt-1">
-    
-      <li>May 8, 2019</li>
-    
-
-    
-      <li class="middot"></li>
-      <li>2 minutes read</li>
-    
-  </ul>
   
 
-</div>
 
 
-          <div class="post-content markdown">
-            <p>    <strong>本文首发于<a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
-<strong><!-- raw HTML omitted -->    转载请注明出处:https://cartoonyu.github.io/cartoon-blog</strong></p>
-<p>    近段时间在学习java集合，原本也没想着写笔记或者博客的。但是慢慢看下去之后发现java集合的内容繁多，但是各集合之间具有很大的共通性。所以就动了写博客的念头。
-    在安卓开发的时候已经有在用集合了，具体是用ArrayList向上转型到list对象。</p>
-<p>    我觉得集合比数组方便的地方主要有4个：</p>
-<ul>
-<li>所有操作都是基于对象进行，符合java的核心思想。</li>
-<li>不用担心数据项的增加导致的数组溢出的情况。</li>
-<li>在插入、删除等等操作的时间开销较少。</li>
-<li>Map接口的子接口以及实现类可以存放具有映射关系的数据。</li>
-</ul>
-<p>    缺点也不是没有，可能是我学的不够深，暂时只发现了一个：Collection接口的子接口以及实现类大部分都是基于一个长度为16的数组实现，所以当插入的数据项少于16时可能会造成资源的浪费。</p>
-<p>    java集合主要由两个接口派生而来：Collection以及Map。</p>
-<p>    下面是两个接口的概述图</p>
-<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/1398594969-5cce5e9ada73d_articlex.jpg" alt=""></p>
-<p>    图的来源为李刚老师的《疯狂java讲义》，如有侵权请联系删除。</p>
-<p>    其中Collection接口的Vector实现类是不建议使用的，一是年代有点久远，二是已经有更先进更好用的ArrayList可以替换使用。</p>
-<p>    下面是Collection、Map接口以及各实现类、子接口的用法（持续更新)。</p>
-<p>    <a href="%5Bhttps://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88-collection%E6%8E%A5%E5%8F%A3/%5D(https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88-collection%E6%8E%A5%E5%8F%A3/)">Collection接口</a></p>
-<p>    <a href="%5Bhttps://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88-iterator%E6%8E%A5%E5%8F%A3/%5D(https://cartoonyu.github.io/cartoon-blog/post/java/java%E9%9B%86%E5%90%88-iterator%E6%8E%A5%E5%8F%A3/)">Iterator接口</a></p>
 
-          </div>
 
-          
-          <div class="row">
-            <div class="col-md-8">
-            
-              <div class="mb-5">
-                
-<div class="li-x div-x post-meta">
-  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
-  <div class="tags-sm">
-    
-      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/java" role="button">JAVA </a></li>
-      
-    
-  </div>
-</div>
-              </div>
-            
-            </div>
-            
-          </div>
-          
-
-          
-          <div class="row pt-3">
-            <div class="col-md-6">
-              
-            </div>
-            
-            <div class="col-md-6 text-right" >
-              
-                <a href=https://cartoonyu.github.io/cartoon-blog/java/java%E9%9B%86%E5%90%88-collection%E6%8E%A5%E5%8F%A3/ class="post-meta">Next
-                  <div class="pt-2 pb-5 flex-reverse">
-                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
-                    <span>JAVA集合--Collection接口</span>
-                  </div>
-                </a>
-              
-            </div>
-          </div>
-
-          
-
-        </div>
-        
-
+  <hr>
+  
+    <div class="post-meta">
+      <div class="mb-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/categories/">
+          <span class="font-weight-bold text-uppercase post-meta">
+            <i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 
+            Categories
+          </span>
+        </a>
       </div>
-      
+
+      <div class="li-x post-meta" style="margin-left: -8px;">
+        
+          
+          
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/java">
+                <span>Java (61)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/interview-question">
+                <span>Interview-Question (50)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/ubuntu">
+                <span>Ubuntu (3)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/android">
+                <span>Android (2)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/assorted">
+                <span>Assorted (2)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/eclipse">
+                <span>Eclipse (2)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/json">
+                <span>Json (2)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/mysql">
+                <span>Mysql (2)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/nginx">
+                <span>Nginx (2)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/algorithms">
+                <span>Algorithms (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/code-unscramble">
+                <span>Code-Unscramble (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/docker">
+                <span>Docker (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/dubbo">
+                <span>Dubbo (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/git">
+                <span>Git (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/message-queue">
+                <span>Message-Queue (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/spring-cloud">
+                <span>Spring-Cloud (1)</span>
+              </a>
+            </li>           
+          
+            
+              <li class="middot"></li>
+            
+            <li class="py-1">
+              <a href="https://cartoonyu.github.io/cartoon-blog/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86">
+                <span>项目管理 (1)</span>
+              </a>
+            </li>           
+          
+        
+      </div>
+    </div>
+
+    
+  
+
 
       
+      
+
+  
+
+
+
+
+
+  <hr>
+  
+    <div class="post-meta">
+      <div class="mb-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog/tags/">
+          <span class="font-weight-bold text-uppercase post-meta">
+            <i class="fas fa-tags pr-1" aria-hidden="true"></i> 
+            Featured Tags
+          </span>
+        </a>
+      </div>
+
+      <div class="li-x post-meta tags-md" style="margin-left: -8px;">
+        
+        
+        
+      </div>
+    </div>
+
+    
+  
+
+
+      
+
+
+
+
+
+
+  
 
     </div>
     
 
-
-  </main>
+    
+    
+    <div class="col-md-9 mt-3">
+      <ul>
+        <div class="div-x">
+            <div class='post-heading'>
   
+      code unscramble
+  
+</div>
 
+            
+            
+              <div class="px-2 middot"></div>
+              <div>
+                One post
+              </div>
+            
+          </div>
+      
+          
+      </ul>
+      <ul>
+        
+        
+            
+            <li class="post-item">
+    
+    <span class="meta"><time datetime='2019-05-08T21:28:14&#43;08:00'>May 8, 2019</time></span>
+    
+    <a href="https://cartoonyu.github.io/cartoon-blog/code-unscramble/easyopen-%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90/"><span>easyopen 参数无法正常传递现象解析</span></a>
+</li>
+
+            
+        
+      </ul>
+    </div>
+    
+    
+  </div>
+</main> 
 
     
     

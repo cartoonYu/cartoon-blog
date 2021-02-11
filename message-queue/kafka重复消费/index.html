@@ -304,7 +304,7 @@
             <p>近段时间学习极客时间李玥老师的后端存储实战课时，看到一个很多意思的东西：用kafka存储点击流的数据，并重复处理。在以往的使用中，kafka只是一个消息传输的载体，消息被消费后就不能再次消费。新知识与印象相冲突，于是就有了本篇文章：kafka数据如何被重复消费。</p>
 <h5 id="heading">前期理论了解</h5>
 <p>首先我先去官网纠正了我对kafka的整体了解。</p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20200913143129.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20200913143129.png" alt=""></p>
 <p>官网对kafka的描述是：一个分布式流平台。怪自己的学艺不精。</p>
 <p>其次，我重新看了一下kafka消费者的消费过程：kafka首先通过push/poll（默认为poll）获取消息，接收消息处理完成后手动/自动提交消费成功，kafka服务器则根据提交情况决定是否移动当前偏移量。</p>
 <h5 id="heading-1">方案确定</h5>
@@ -358,7 +358,7 @@
         }
     }
 </code></pre><h5 id="heading-2">运行结果</h5>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20200913153040.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20200913153040.png" alt=""></p>
 <h5 id="heading-3">需注意的点</h5>
 <p>在手动设置偏移量时，遇到了一个exception</p>
 <pre><code>java.lang.IllegalStateException: No current assignment for partition test-0

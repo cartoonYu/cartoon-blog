@@ -58,12 +58,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/nginx/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/nginx/</loc>
     <lastmod>2019-12-15T22:44:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/nginx/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/nginx/</loc>
     <lastmod>2019-12-15T22:44:19+08:00</lastmod>
   </url>
   
@@ -78,12 +78,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/dubbo/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/dubbo/</loc>
     <lastmod>2019-11-09T11:14:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/dubbo/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/dubbo/</loc>
     <lastmod>2019-11-09T11:14:02+08:00</lastmod>
   </url>
   
@@ -143,12 +143,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/java/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/java/</loc>
     <lastmod>2019-10-09T22:37:49+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/java/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/java/</loc>
     <lastmod>2019-10-09T22:37:49+08:00</lastmod>
   </url>
   
@@ -198,12 +198,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/interview-question/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/interview-question/</loc>
     <lastmod>2019-07-27T22:52:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/interview-question/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/interview-question/</loc>
     <lastmod>2019-07-27T22:52:29+08:00</lastmod>
   </url>
   
@@ -329,11 +329,6 @@
   
   <url>
     <loc>https://cartoonyu.github.io/cartoon-blog/assorted/4%E7%A7%8D%E6%9E%81%E5%A4%A7%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87%E7%9A%84%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2019-05-18T13:55:51+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/assorted/%E6%8E%A8%E6%96%871/</loc>
     <lastmod>2019-05-18T13:55:51+08:00</lastmod>
   </url>
   
@@ -498,12 +493,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/git/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/git/</loc>
     <lastmod>2019-05-08T22:00:12+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/git/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/git/</loc>
     <lastmod>2019-05-08T22:00:12+08:00</lastmod>
   </url>
   
@@ -533,12 +528,32 @@
   </url>
   
   <url>
+    <loc>https://cartoonyu.github.io/cartoon-blog/algorithms/</loc>
+    <lastmod>2019-05-08T21:28:14+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cartoonyu.github.io/cartoon-blog/tags/algorithms/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/algorithms/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/code-unscramble/</loc>
+    <lastmod>2019-05-08T21:28:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/code-unscramble/</loc>
+    <lastmod>2019-05-08T21:28:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cartoonyu.github.io/cartoon-blog/code-unscramble/</loc>
+    <lastmod>2019-05-08T21:28:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cartoonyu.github.io/cartoon-blog/code-unscramble/easyopen-%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
@@ -548,12 +563,12 @@
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/tags/ubuntu/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/categories/ubuntu/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cartoonyu.github.io/cartoon-blog/categories/ubuntu/</loc>
+    <loc>https://cartoonyu.github.io/cartoon-blog/tags/ubuntu/</loc>
     <lastmod>2019-05-08T21:28:14+08:00</lastmod>
   </url>
   

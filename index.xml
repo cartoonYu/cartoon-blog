@@ -337,15 +337,6 @@
     </item>
     
     <item>
-      <title>4种极大提升学习效率的工具</title>
-      <link>https://cartoonyu.github.io/cartoon-blog/assorted/%E6%8E%A8%E6%96%871/</link>
-      <pubDate>Sat, 18 May 2019 13:55:51 +0800</pubDate>
-      
-      <guid>https://cartoonyu.github.io/cartoon-blog/assorted/%E6%8E%A8%E6%96%871/</guid>
-      <description>I believe human‘s mind is limited,so we should use tools to widen our mind.</description>
-    </item>
-    
-    <item>
       <title>JAVA面试题(29)</title>
       <link>https://cartoonyu.github.io/cartoon-blog/interview-question/java-interview-question29/</link>
       <pubDate>Fri, 17 May 2019 15:59:09 +0800</pubDate>
@@ -631,6 +622,15 @@
       
       <guid>https://cartoonyu.github.io/cartoon-blog/java/stackarraydequelinkedlist%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>简单叙述三者之间的区别</description>
+    </item>
+    
+    <item>
+      <title>easyopen 参数无法正常传递现象解析</title>
+      <link>https://cartoonyu.github.io/cartoon-blog/code-unscramble/easyopen-%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Wed, 08 May 2019 21:28:14 +0800</pubDate>
+      
+      <guid>https://cartoonyu.github.io/cartoon-blog/code-unscramble/easyopen-%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90/</guid>
+      <description>easyopen 参数无法正常传递现象解析</description>
     </item>
     
     <item>

@@ -354,14 +354,14 @@
 <li>基本数据结构</li>
 </ol>
 <p>​       基本数据类型因人而已，常规的哈希取模采用大多采用将数据 hash 到 2^32 - 1的空间中，一致性哈希通常在此基础上将空间变成一个环。如下图所示。</p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt=""></p>
 <p>​      本次实现采用的是 key 按大小排列的哈希表。原打算使用数组承接数据，但排序成本随 key 的增多而加大，遂放弃。</p>
 <ol start="2">
 <li>
 <p>数据存储</p>
 <p>数据存储与哈希取模算法大致相同，都是通过计算存入数据的哈希值放入对应的哈希槽上。但一致性哈希差异之处在于当计算 hash 不在环上，数据存入首个 hash 槽中。</p>
 <p>场景假设: 现已上线 4 节点（server1 ~ 4），对应 hash 值为 hash1 ~ 4。现有5个数据（hash1 ~ 5）于存入节点中，结果如下图所示。</p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE.png" alt=""></p>
 </li>
 </ol>
 <p>​       本次实现采用的思路是</p>
@@ -373,7 +373,7 @@
 </ol>
 <p>​       新节点加入一致性哈希环中，原理是通过计算节点所代表的 hash 值，并根据计算值将节点映射在环上，最后迁移相邻节点数据到新节点上。</p>
 <p>​       场景假设: 现已上线 4 台服务器（server1 ~ 4），对应 hash 值为 hash1 ~ 4。现有一个新节点（hash5）节点上线到环上。结果如下图所示。</p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%8A%82%E7%82%B9%E4%B8%8A%E7%BA%BF.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%8A%82%E7%82%B9%E4%B8%8A%E7%BA%BF.png" alt=""></p>
 <p>​         本次实现采用的思路是</p>
 <pre><code>1. 计算上线节点 hash 值
 2. 计算上线节点所新增的虚拟节点的 hash 值（若初始化指定虚拟节点数量）
@@ -385,7 +385,7 @@
 </ol>
 <p>​       已有节点下线，原理是通过计算节点所代表的 hash 值，取出节点所含数据，下线节点，将取出数据重新放入 hash 环上。</p>
 <p>​       场景假设: 现已上线 5 台服务器（server1 ~ 5），对应 hash 值为 hash1 ~ 5。现节点 server4 下线。结果如下图所示。</p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%8A%82%E7%82%B9%E4%B8%8B%E7%BA%BF.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/%E4%B8%80%E8%87%B4%E6%80%A7hash%E8%8A%82%E7%82%B9%E4%B8%8B%E7%BA%BF.png" alt=""></p>
 <p>​       本次实现采用的思路是</p>
 <pre><code>1. 计算下线节点 hash 值
 2. 取出下线节点以及虚拟节点（若初始化指定虚拟节点数量）存储数据

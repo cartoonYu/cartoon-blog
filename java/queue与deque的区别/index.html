@@ -305,7 +305,7 @@
 <p>​	在研究java集合源码的时候，发现了一个很少用但是很有趣的点：Queue以及Deque，平常在写leetcode经常用LinkedList向上转型Deque作为栈或者队列使用，但是一直都不知道Queue的作用，于是就直接官方文档好了。</p>
 <h3 id="heading-1">正文</h3>
 <h4 id="heading-2">概念</h4>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/1398594969-5cce5e9ada73d_articlex.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/1398594969-5cce5e9ada73d_articlex.jpg" alt=""></p>
 <p>从上图看出，Queue以及Deque都是继承于Collection，Deque是Queue的子接口。</p>
 <p>下面来看一下官方文档的解释。</p>
 <blockquote>
@@ -322,10 +322,11 @@
 <ul>
 <li>PriorityQueue</li>
 </ul>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926005502.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20190926005502.png" alt=""></p>
 <p>我觉得重点就在圈定的两个单词：无边界的，优先级的堆。然后再看看源码</p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926005714.png" alt=""><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926010300.png" alt=""></p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926010034.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20190926005714.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20190926010300.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20190926010034.png" alt=""></p>
 <p>在第一张图片的源码中，明显看到PriorityQueue的底层数据结构是数组，而无边界的形容，那么指明了PriorityQueue是自带扩容机制的，具体请看PriorityQueue的grow方法。</p>
 <p>在第二张第三张图片中，可以看到插入元素的时候是需要经过compareTo的处理，那么最常用就是一些范围极值的输出，类似于堆排序的用法。</p>
 <p>下面演示一下正反序输出三个元素的使用</p>
@@ -362,8 +363,8 @@
 <ul>
 <li>LinkedList以及ArrayDeque</li>
 </ul>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926011817.png" alt=""></p>
-<p><img src="https://cartoon-blog.oss-cn-beijing.aliyuncs.com/20190926011948.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20190926011817.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20190926011948.png" alt=""></p>
 <p>从官方解释来看，ArrayDeque是无初始容量的双端队列，LinkedList则是双向链表。而我们还能看到，ArrayDeque作为队列时的效率比LinkedList要高，而在栈的使用场景下，无疑具有尾结点不需判空的LinkedList较高效。</p>
 <p>下面演示ArrayDeque作为队列以及LinkedList作为栈的使用</p>
 <pre><code>private static void usingAsQueue() {
