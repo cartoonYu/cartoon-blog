@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="cartoon">
+  <meta name="description" content="easyopen 参数无法正常传递现象解析">
+  
+  <meta property="og:title" content="easyopen 参数无法正常传递现象解析" />
+<meta property="og:description" content="easyopen 参数无法正常传递现象解析" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cartoonyu.github.io/cartoon-blog/source-code-unscramble/easyopen-%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90/" />
+<meta property="article:published_time" content="2019-05-08T21:28:14+08:00" />
+<meta property="article:modified_time" content="2019-05-08T21:28:14+08:00" />
+
+
+  <title>
+  
+       easyopen 参数无法正常传递现象解析 | cartoon&#39;s blog 
+  
+  </title>
+
+  <link rel="canonical" href="https://cartoonyu.github.io/cartoon-blog/source-code-unscramble/easyopen-%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90/">
+
+  
+  
+  <script type="text/javascript">
+      var baseURL = 'https:\/\/cartoonyu.github.io\/cartoon-blog';
+      var host = baseURL.substring(0, baseURL.length - 1).replace(/\//g, '');
+      if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+          window.location.protocol = 'https:';
+      }
+  </script>
+  
+
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://cartoonyu.github.io/cartoon-blog/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  
+  
+
+  
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://cartoonyu.github.io/cartoon-blog">
+          
+        <img class="avatar" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> cartoon</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog">Home</a>
+          </li>
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/about/" >About me  </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://cartoonyu.github.io/cartoon-blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides/raw_1515691746.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://cartoonyu.github.io/cartoon-blog/img/header-slides//raw_1515847341.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://cartoonyu.github.io/cartoon-blog">
+          
+            <img class="pull-right avatar avatar-md" src="https://cartoonyu.github.io/cartoon-blog/img/G.E.M.jpg" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://cartoonyu.github.io/cartoon-blog">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>cartoon&#39;s blog</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="https://github.com/cartoonYu" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="container pr-5">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://cartoonyu.github.io/cartoon-blog/categories/code-unscramble"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> code unscramble </a></li>
+      
+    
+    
+  </ul>
+
+  <div class="px-4 post-heading">easyopen 参数无法正常传递现象解析</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>May 8, 2019</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>4 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            <h4 id="heading">前言</h4>
+<p>近段时间在使用easyopen时，发现定义的请求体与实际参数不符时会出现参数无法正常传递的现象，于是就把easyopen的源码 clone 下来研究了一波。</p>
+<h4 id="easyopen-">easyopen 测试版本</h4>
+<blockquote>
+<pre><code>1.16.6.1
+</code></pre></blockquote>
+<h4 id="heading-1">场景复现</h4>
+<ul>
+<li>请求体定义如下</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GoodsParam</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@ApiDocField</span><span style="color:#f92672">(</span>description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;商品名称&#34;</span><span style="color:#f92672">,</span> required <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> example <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;iphoneX&#34;</span><span style="color:#f92672">,</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;goods&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> String goodsName<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGoodsName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> goodsName<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setGoodsName</span><span style="color:#f92672">(</span>String goodsName<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">goodsName</span> <span style="color:#f92672">=</span> goodsName<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>接口定义如下</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@ApiService</span>
+<span style="color:#a6e22e">@ApiDoc</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;商品模块&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GoodsApi</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> Logger log <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>GoodsApi<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Api</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;goods.get&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">@ApiDocMethod</span><span style="color:#f92672">(</span>description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;获取商品&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getGoods</span><span style="color:#f92672">(</span>GoodsParam param<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;incoming param: {}&#34;</span><span style="color:#f92672">,</span> JSONObject<span style="color:#f92672">.</span><span style="color:#a6e22e">toJSONString</span><span style="color:#f92672">(</span>param<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> param<span style="color:#f92672">.</span><span style="color:#a6e22e">getGoodsName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div><pre><code>上述代码使用[官方示例](https://gitee.com/durcframework/easyopen/tree/master/easyopen-demo/easyopen-server-normal)修改。
+
+因为我是要复现出错的场景，所以我对请求体属性 goodsName 进行修改，并修改原有接口逻辑，使得接口打印请求体数据并直接返回请求体 goodsName 属性。
+
+启动项目，请求接口 [goods.get](http://localhost:8081/api/doc#201)，日志与结果截图如下
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20201026224740.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20201026224806.png" alt=""></p>
+<pre><code>接口并未如文档定义一般拿到请求体的参数，场景复现。
+</code></pre>
+<h4 id="heading-2">寻找原因</h4>
+<pre><code>代码的好处是，0 即是 0，1 就是 1，如果 0 变成 1，那就是你写的 bug 或者你有意为之，这个场景必定有代码作为支撑。
+
+  因为研读源码的经验较浅，所以一开始从框架打印日志入手。
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20201026225418.png" alt=""></p>
+<pre><code> 程序在启动时总会打这几行日志，所以就全局搜索了一波，定位到 src\main\java\com\gitee\easyopen\register\ApiRegister.java 的 doWith 方法中。
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">doWith</span><span style="color:#f92672">(</span>Method method<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IllegalArgumentException<span style="color:#f92672">,</span> IllegalAccessException <span style="color:#f92672">{</span>
+	checkTransactionalAnnotation<span style="color:#f92672">(</span>method<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     ReflectionUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">makeAccessible</span><span style="color:#f92672">(</span>method<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     Api api <span style="color:#f92672">=</span> AnnotationUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">findAnnotation</span><span style="color:#f92672">(</span>method<span style="color:#f92672">,</span> Api<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#66d9ef">boolean</span> ignoreSign <span style="color:#f92672">=</span> api<span style="color:#f92672">.</span><span style="color:#a6e22e">ignoreSign</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apiServiceAnno</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ignoreSign</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#66d9ef">boolean</span> ignoreValidate <span style="color:#f92672">=</span> api<span style="color:#f92672">.</span><span style="color:#a6e22e">ignoreValidate</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apiServiceAnno</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ignoreValidate</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#66d9ef">boolean</span> isWrapResult <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">apiServiceAnno</span><span style="color:#f92672">.</span><span style="color:#a6e22e">wrapResult</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">?</span> api<span style="color:#f92672">.</span><span style="color:#a6e22e">wrapResult</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+     ApiDefinition apiDefinition <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ApiDefinition<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#75715e">//apiDefinition setter....
+</span><span style="color:#75715e"></span>     Parameter<span style="color:#f92672">[</span><span style="color:#f92672">]</span> parameters <span style="color:#f92672">=</span> method<span style="color:#f92672">.</span><span style="color:#a6e22e">getParameters</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     Class<span style="color:#f92672">&lt;</span><span style="color:#f92672">?</span><span style="color:#f92672">&gt;</span> paramClass <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+     <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>parameters <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> parameters<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+     	Parameter parameter <span style="color:#f92672">=</span> parameters<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+        paramClass <span style="color:#f92672">=</span> parameter<span style="color:#f92672">.</span><span style="color:#a6e22e">getType</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">boolean</span> isNumberOrStringType <span style="color:#f92672">=</span> FieldUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">isNumberOrStringType</span><span style="color:#f92672">(</span>paramClass<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">setSingleParameter</span><span style="color:#f92672">(</span>isNumberOrStringType<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">setMethodArguClass</span><span style="color:#f92672">(</span>paramClass<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isNumberOrStringType<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            SingleParameterContext<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>handler<span style="color:#f92672">,</span> method<span style="color:#f92672">,</span> parameter<span style="color:#f92672">,</span> api<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+     <span style="color:#f92672">}</span>
+     logger<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;注册接口name={},version={},method={} {}({})&#34;</span><span style="color:#f92672">,</span> api<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> api<span style="color:#f92672">.</span><span style="color:#a6e22e">version</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>
+     method<span style="color:#f92672">.</span><span style="color:#a6e22e">getReturnType</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> method<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> paramClass <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">:</span> paramClass<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> 
+     <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        DefinitionHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">addApiDefinition</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        apiConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getApiRegistEvent</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onSuccess</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>DuplicateApiNameException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        logger<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> e<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">exit</span><span style="color:#f92672">(</span>0<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#f92672">}</span>
+     apiCount<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addApiDefinition</span><span style="color:#f92672">(</span>ApiDefinition apiDefinition<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> DuplicateApiNameException <span style="color:#f92672">{</span>
+    String key <span style="color:#f92672">=</span> getKey<span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">boolean</span> hasApi <span style="color:#f92672">=</span> apiDefinitionMap<span style="color:#f92672">.</span><span style="color:#a6e22e">containsKey</span><span style="color:#f92672">(</span>key<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>hasApi<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> DuplicateApiNameException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;重复申明接口,name:&#34;</span> <span style="color:#f92672">+</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; ,version:&#34;</span><span style="color:#f92672">+</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getVersion</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,method:&#34;</span> <span style="color:#f92672">+</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    apiDefinitionMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> apiDefinition<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><pre><code>阅读代码发现，这一段代码只负责定义接口的解析并形成一个 String to ApiDefinition 的 Map，并没有请求体参数转换逻辑，所以这不是目的地。
+
+但是这么大段代码只形成一个 Map，这个 Map 必定有其作用。于是寻找调用这个 Map 的 getter 方法，最后定位到 src\main\java\com\gitee\easyopen\register\ApiInvoker.java 的 doInvoke 方法中。
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">protected</span> Object <span style="color:#a6e22e">doInvoke</span><span style="color:#f92672">(</span>ApiParam param<span style="color:#f92672">,</span> HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Throwable <span style="color:#f92672">{</span>
+    ApiDefinition apiDefinition <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getApiDefinition</span><span style="color:#f92672">(</span>param<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    ApiContext<span style="color:#f92672">.</span><span style="color:#a6e22e">setApiMeta</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span><span style="color:#f92672">!</span>apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">isIgnoreJWT</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">initJwtInfo</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> param<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 方法参数
+</span><span style="color:#75715e"></span>    Object methodArgu <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 返回结果
+</span><span style="color:#75715e"></span>    Object invokeResult <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    Validator validator <span style="color:#f92672">=</span> ApiContext<span style="color:#f92672">.</span><span style="color:#a6e22e">getApiConfig</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getValidator</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    param<span style="color:#f92672">.</span><span style="color:#a6e22e">setIgnoreSign</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">isIgnoreSign</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    param<span style="color:#f92672">.</span><span style="color:#a6e22e">setIgnoreValidate</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">isIgnoreValidate</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 验证操作，这里有负责验证签名参数
+</span><span style="color:#75715e"></span>    validator<span style="color:#f92672">.</span><span style="color:#a6e22e">validate</span><span style="color:#f92672">(</span>param<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 业务参数json格式
+</span><span style="color:#75715e"></span>    String busiJsonData <span style="color:#f92672">=</span> ApiContext<span style="color:#f92672">.</span><span style="color:#a6e22e">getApiConfig</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getDataDecoder</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span>param<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 业务参数Class
+</span><span style="color:#75715e"></span>    Class<span style="color:#f92672">&lt;</span><span style="color:#f92672">?</span><span style="color:#f92672">&gt;</span> arguClass <span style="color:#f92672">=</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethodArguClass</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">boolean</span> isSingleParameter <span style="color:#f92672">=</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">isSingleParameter</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    Object singleParamProxy <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> interceptorIndex <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 将参数绑定到业务方法参数上，业务方法参数可以定义的类型：JSONObject,Map&lt;String,Object&gt;,String,业务参数类
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>arguClass <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>arguClass <span style="color:#f92672">=</span><span style="color:#f92672">=</span> JSONObject<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                methodArgu <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>arguClass <span style="color:#f92672">=</span><span style="color:#f92672">=</span> Map<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                methodArgu <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span>Object<span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span>JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>isSingleParameter<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                SingleParameterContext<span style="color:#f92672">.</span><span style="color:#a6e22e">SingleParameterContextValue</span> value <span style="color:#f92672">=</span> SingleParameterContext<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>param<span style="color:#f92672">.</span><span style="color:#a6e22e">fatchName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> param<span style="color:#f92672">.</span><span style="color:#a6e22e">fatchVersion</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>value <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    JSONObject jsonObj <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                    methodArgu <span style="color:#f92672">=</span> jsonObj<span style="color:#f92672">.</span><span style="color:#a6e22e">getObject</span><span style="color:#f92672">(</span>value<span style="color:#f92672">.</span><span style="color:#a6e22e">getParamName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> arguClass<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                    singleParamProxy <span style="color:#f92672">=</span> jsonObj<span style="color:#f92672">.</span><span style="color:#a6e22e">toJavaObject</span><span style="color:#f92672">(</span>value<span style="color:#f92672">.</span><span style="color:#a6e22e">getWrapClass</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                methodArgu <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">,</span> arguClass<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">bindUploadFile</span><span style="color:#f92672">(</span>methodArgu<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 拦截器
+</span><span style="color:#75715e"></span>        ApiInterceptor<span style="color:#f92672">[</span><span style="color:#f92672">]</span> interceptors <span style="color:#f92672">=</span> ApiContext<span style="color:#f92672">.</span><span style="color:#a6e22e">getApiConfig</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getInterceptors</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>interceptors <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            interceptors <span style="color:#f92672">=</span> EMPTY_INTERCEPTOR_ARRAY<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//1. 调用preHandle
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> interceptors<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            ApiInterceptor interceptor <span style="color:#f92672">=</span> interceptors<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>  
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>interceptor<span style="color:#f92672">.</span><span style="color:#a6e22e">match</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">)</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span> <span style="color:#f92672">!</span>interceptor<span style="color:#f92672">.</span><span style="color:#a6e22e">preHandle</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getHandler</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span>methodArgu<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//1.1、失败时触发afterCompletion的调用  
+</span><span style="color:#75715e"></span>                triggerAfterCompletion<span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">,</span> interceptorIndex<span style="color:#f92672">,</span> request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">,</span><span style="color:#66d9ef">null</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>  
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//1.2、记录当前预处理成功的索引
+</span><span style="color:#75715e"></span>            interceptorIndex <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 验证业务参数JSR-303
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">validateBizArgu</span><span style="color:#f92672">(</span>validator<span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">,</span> singleParamProxy<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">/* *** 调用业务方法,被@Api标记的方法 ***/</span>
+        MethodCaller methodCaller <span style="color:#f92672">=</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethodCaller</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>methodCaller <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            invokeResult <span style="color:#f92672">=</span> methodCaller<span style="color:#f92672">.</span><span style="color:#a6e22e">call</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> ApiInvocation<span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            invokeResult <span style="color:#f92672">=</span> Callers<span style="color:#f92672">.</span><span style="color:#a6e22e">call</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//3、调用postHandle,业务方法调用后处理（逆序）  
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> interceptors<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>  
+            ApiInterceptor interceptor <span style="color:#f92672">=</span> interceptors<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">;</span>  
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>interceptor<span style="color:#f92672">.</span><span style="color:#a6e22e">match</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                interceptor<span style="color:#f92672">.</span><span style="color:#a6e22e">postHandle</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getHandler</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">,</span> invokeResult<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>  
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>invokeResult <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            invokeResult <span style="color:#f92672">=</span> EMPTY_OBJECT<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 最终返回的对象
+</span><span style="color:#75715e"></span>        Object finalReturn <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">wrapResult</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">,</span> invokeResult<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        setMsg<span style="color:#f92672">(</span>finalReturn<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#75715e">//4、触发整个请求处理完毕回调方法afterCompletion  
+</span><span style="color:#75715e"></span>        triggerAfterCompletion<span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">,</span> interceptorIndex<span style="color:#f92672">,</span> request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">,</span> finalReturn<span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> finalReturn<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">triggerAfterCompletion</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">,</span> interceptorIndex<span style="color:#f92672">,</span> request<span style="color:#f92672">,</span> response<span style="color:#f92672">,</span> methodArgu<span style="color:#f92672">,</span> invokeResult<span style="color:#f92672">,</span> e<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">throw</span> e<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><pre><code>阅读代码发现，此段代码主要做了四个事情：解析网络请求数据，从  apiDefinitionMap 获取接口对应配置，反射调用对应接口，包装调用接口返回结果并返回。参数解析必定在此段代码中处理！
+ 
+通过断点 debug 查看数据得知，参数解析集中于以下代码
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>arguClass <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>arguClass <span style="color:#f92672">=</span><span style="color:#f92672">=</span> JSONObject<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        methodArgu <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>arguClass <span style="color:#f92672">=</span><span style="color:#f92672">=</span> Map<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        methodArgu <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">(</span>JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isSingleParameter<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SingleParameterContextValue value <span style="color:#f92672">=</span> SingleParameterContext<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>apiDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethod</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>value <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            JSONObject jsonObj <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            methodArgu <span style="color:#f92672">=</span> jsonObj<span style="color:#f92672">.</span><span style="color:#a6e22e">getObject</span><span style="color:#f92672">(</span>value<span style="color:#f92672">.</span><span style="color:#a6e22e">getParamName</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">,</span> arguClass<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            singleParamProxy <span style="color:#f92672">=</span> jsonObj<span style="color:#f92672">.</span><span style="color:#a6e22e">toJavaObject</span><span style="color:#f92672">(</span>value<span style="color:#f92672">.</span><span style="color:#a6e22e">getWrapClass</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+        methodArgu <span style="color:#f92672">=</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>busiJsonData<span style="color:#f92672">,</span> arguClass<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">bindUploadFile</span><span style="color:#f92672">(</span>methodArgu<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><img src="https://raw.githubusercontent.com/cartoonYu/cartoon-blog-image/master/20201103002224.png" alt=""></p>
+<pre><code>step into断点得知，easyopen 依赖 fastjson 的序列化机制进行参数的序列化，原因得知：easyopen 使用 fastjson 序列化参数成为参数类获取参数，所以当 @ApiDocField 的属性 name 与参数类对应的属性名不一致时，属性值获取失败。
+</code></pre>
+<p><strong>    本文首发于 <a href="https://cartoonyu.github.io/cartoon-blog/">cartoon的博客</a></strong>
+<strong>转载请注明出处:<a href="https://cartoonyu.github.io/cartoon-blog/post/source-code-unscramble/easyopen%E5%8F%82%E6%95%B0%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BC%A0%E9%80%92%E7%8E%B0%E8%B1%A1%E8%A7%A3%E6%9E%90">https://cartoonyu.github.io/cartoon-blog/post/source-code-unscramble/easyopen参数无法正常传递现象解析</a></strong></p>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://cartoonyu.github.io/cartoon-blog/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://cartoonyu.github.io/cartoon-blog/tags/code-unscramble" role="button">code unscramble </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="https://github.com/cartoonYu " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="https://www.linkedin.com/in/%E5%AE%B6%E6%B3%89-%E4%BD%99-3361b2188/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="https://www.instagram.com/cartoonyu3/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:13414156340@163.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2021 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://cartoonyu.github.io/cartoon-blog/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>
